@@ -11,9 +11,9 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class Game extends Application{
+public class Main extends Application{
 
-    Image picture = new Image ("file:resources/background.png");
+    Image picture = new Image ("file:background.png");
     Button button;
     Hand hand = new Hand();
 
