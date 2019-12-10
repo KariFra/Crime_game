@@ -1,7 +1,10 @@
 package sample;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class CaseFiles {
 
@@ -46,10 +49,15 @@ public class CaseFiles {
     }
 
     public ArrayList<Evidence> mixTheDeck(){
-        Random randome = new Random();
+
         for (int i =0; i<newDeck.size(); i++){
+            Random randome = new Random();
+            Evidence card = newDeck.get(i);
+            LinkedHashSet<Integer> setOfNumbers = new LinkedHashSet<>();
             int randomePosition = randome.nextInt(newDeck.size());
-            newDeck.add(randomePosition,newDeck.get(i));
+            setOfNumbers.add(randomePosition);
+            newDeck.remove(card);
+            newDeck.add(randomePosition,card);
         }
         return newDeck;
     }
@@ -60,11 +68,14 @@ public class CaseFiles {
         return newCard;
     }
     public Evidence pickTheCaseFilesFromTheDeck(int n){
-        if ( newDeck.get(n).getGender() == "UNKNOWN" || newDeck.get(n).getTool() == "UNKNOWN" || newDeck.get(n).getPlace() == "UNKNOWN" || newDeck.get(n).getTime() == "UNKNOWN"){
-            n+=1;
-        }
-        newCard = newDeck.get(n);
-        System.out.println(" Yours new murder case is as follows " + newCard);
+        List<Evidence> possibleCaseFiles = newDeck.stream()
+                .filter(e -> e.getGender() != "UNKNOWN")
+                .filter(e -> e.getTool() != "UNKNOWN")
+                .filter(e -> e.getTime() != "UNKNOWN")
+                .filter(e -> e.getPlace() != "UNKNOWN")
+                .collect(Collectors.toList());
+        newCaseFileCard = possibleCaseFiles.get(n);
+        System.out.println(" Yours new murder case is as follows " + newCaseFileCard);
         return newCaseFileCard;
     }
     public ArrayList<Evidence> removeTheCardFromTheDeck(Evidence newCard){
@@ -72,11 +83,20 @@ public class CaseFiles {
         newDeck.remove(number);
         return newDeck;
     }
-//    public ArrayList<Evidence> removeTheCaseFilesFromTheDeck(Evidence newCaseFileCard){
-//        int number = newDeck.indexOf(newCaseFileCard);
-//        newDeck.remove(number);
-//        return newDeck;
-//    }
+    public ArrayList<Evidence> removeTheCaseFilesFromTheDeck(Evidence newCaseFileCard){
+        int number = newDeck.indexOf(newCaseFileCard);
+        newDeck.remove(number);
+        return newDeck;
+    }
+
+    public ArrayList<Solution> fillNewSolutionDeck(){
+        ArrayList<Solution> solutionCards = new ArrayList<>();
+        solutionCards.add(new Solution(1,"One drop"));
+        solutionCards.add(new Solution(2,"Two drops"));
+        solutionCards.add(new Solution(3,"Three drops"));
+
+        return solutionCards;
+    }
 
 }
 

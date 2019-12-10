@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application{
 
-    Image picture = new Image ("file:background.png");
+    Image picture = new Image ("file:src/sample/background.png");
     Button button;
     Hand hand = new Hand();
 

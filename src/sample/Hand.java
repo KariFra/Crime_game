@@ -7,12 +7,19 @@ public class Hand {
     CaseFiles caseFiles = new CaseFiles();
     ArrayList<Evidence> handDeck = new ArrayList<>();
     ArrayList<Evidence> murderCases = new ArrayList();
+    ArrayList<Solution> playerOneSolutionCards = new ArrayList();
+    ArrayList<Solution> playerTwoSolutionCards = new ArrayList();
 
 
-    public ArrayList<Evidence> GetTheCardsToBeginTheGame(){
+
+
+
+
+
+    public void GetTheCardsToBeginTheGame(){
 
         caseFiles.createTheNewDeck();
-//        caseFiles.mixTheDeck();
+        caseFiles.mixTheDeck();
         Evidence card1 =caseFiles.pickTheCardFromTheDeck(0);
         Evidence card2 =caseFiles.pickTheCardFromTheDeck(1);
         Evidence card3 =caseFiles.pickTheCardFromTheDeck(2);
@@ -22,22 +29,23 @@ public class Hand {
         caseFiles.removeTheCardFromTheDeck(card1);
         caseFiles.removeTheCardFromTheDeck(card2);
         caseFiles.removeTheCardFromTheDeck(card3);
+        playerOneSolutionCards = caseFiles.fillNewSolutionDeck();
+        playerTwoSolutionCards = caseFiles.fillNewSolutionDeck();
         System.out.println(handDeck);
-        return handDeck;
+
     }
-    public ArrayList<Evidence> chooseTheMurderCase(){
+    public void chooseTheMurderCase(){
         Evidence murderCase =caseFiles.pickTheCaseFilesFromTheDeck(1);
         murderCases.add(murderCase);
-//        caseFiles.removeTheCaseFilesFromTheDeck(murderCase);
+        caseFiles.removeTheCaseFilesFromTheDeck(murderCase);
         System.out.println(murderCases);
-        return murderCases;
+
     }
 
-    public ArrayList<Evidence> pickTheCardDuringGame(){
+    public void pickTheCardDuringGame(){
         Evidence card1 =caseFiles.pickTheCardFromTheDeck(1);
         caseFiles.removeTheCardFromTheDeck(card1);
         handDeck.add(card1);
-        return handDeck;
     }
 
     public void askForEvidenceComparison(){
