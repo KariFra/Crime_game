@@ -119,11 +119,11 @@ public class Main extends Application {
             System.out.println(caseFiles.newDeck);
             caseFiles.pickPossibleCaseCards();
             System.out.println(caseFiles.newCaseFileCards);
-            caseFiles.pickCaseFileCard();
-            System.out.println(caseFiles.newCaseFileCard);
+            System.out.println(caseFiles.newCaseFileCards.get(0));
+            caseFiles.removeTheCaseFilesFromTheDeck(caseFiles.newCaseFileCards.get(0));
 //            hand.chooseTheMurderCase();
-//            caseCard.setFill(new ImagePattern(new Image("hand.murderCase.getPicture()")));
-//            caseCard.setVisible(true);
+            caseCard.setFill(new ImagePattern(new Image("caseFiles.newCaseFileCards.get(0).getPicture()")));
+            caseCard.setVisible(true);
 //            System.out.println(caseFiles.newCard);
         });
 

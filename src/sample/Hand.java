@@ -28,13 +28,13 @@ public class Hand {
 
     public void BeginTheGame(){
     }
-    public Evidence chooseTheMurderCase(){
-        caseFiles.pickPossibleCaseCards();
-        murderCase = caseFiles.pickCaseFileCard();
-        caseFiles.removeTheCaseFilesFromTheDeck(murderCase);
-        return murderCase;
-
-    }
+//    public Evidence chooseTheMurderCase(){
+//        caseFiles.pickPossibleCaseCards();
+//        murderCase = caseFiles.pickPossibleCaseCards().get(0);
+//        caseFiles.removeTheCaseFilesFromTheDeck(murderCase);
+//        return murderCase;
+//
+//    }
 
     public void pickTheCardDuringGame(){
         Evidence card1 =caseFiles.pickTheCardFromTheDeck();

@@ -98,9 +98,6 @@ Evidence WKN = new Evidence("WOMAN","KNIFE", "UNKNOWN", "NIGHT","file:src/sample
                 .collect(Collectors.toCollection(ArrayList::new));
         return newCaseFileCards;
     }
-    public Evidence pickCaseFileCard(){
-        newCaseFileCards.get(0);
-        return newCaseFileCard;
-    }
+
 }
 
