@@ -6,14 +6,15 @@ public class Evidence {
     private String tool;
     private String place;
     private String time;
-    private String link;
+    private String picture;
 
 
-    public Evidence(String gender, String tool, String place, String time) {
+    public Evidence(String gender, String tool, String place, String time, String picture) {
         this.gender = gender;
         this.tool = tool;
         this.place = place;
         this.time = time;
+        this.picture = picture;
     }
 
     public String getGender() {
@@ -32,9 +33,9 @@ public class Evidence {
         return time;
     }
 
-
-
-
+    public String getPicture() {
+        return picture;
+    }
 
     @Override
     public String toString() {

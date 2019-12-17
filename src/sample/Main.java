@@ -9,6 +9,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -38,13 +39,15 @@ public class Main extends Application {
     Button button2 = new Button("      2     ");
     Button button3 = new Button("      3     ");
     Button button = new Button("Case");
-    Stage window;
+    Button buttonDraw = new Button("Draw a card");
+
+    Rectangle caseCard = new Rectangle(250.00, 60.00);
     Circle circle1 = new Circle(40.00);
     Circle circle2 = new Circle(40.00);
     Circle circle3 = new Circle(40.00);
     Circle circle4 = new Circle(40.00);
 
-
+    Stage window;
 
     public static void main(String[] args) {
         launch(args);
@@ -73,6 +76,10 @@ public class Main extends Application {
         circle4.setFill(new ImagePattern(unknown));
 
 
+        caseCard.setVisible(false);
+        buttonDraw.setVisible(false);
+
+
 
 //inserting elements to the grid
 
@@ -83,13 +90,15 @@ public class Main extends Application {
         GridPane.setConstraints(button01, 1, 13);
         GridPane.setConstraints(button2, 3, 13);
         GridPane.setConstraints(button3, 5, 13);
-        GridPane.setConstraints(circle1, 7, 10);
-        GridPane.setConstraints(circle2, 7, 8);
-        GridPane.setConstraints(circle3, 7, 6);
-        GridPane.setConstraints(circle4, 7, 4);
+        GridPane.setConstraints(buttonDraw, 7, 11);
+        GridPane.setConstraints(caseCard, 1, 1);
+        GridPane.setConstraints(circle1, 7, 9);
+        GridPane.setConstraints(circle2, 7, 7);
+        GridPane.setConstraints(circle3, 7, 5);
+        GridPane.setConstraints(circle4, 7, 3);
 
 
-        grid.getChildren().addAll(button,button01,button2, button3, circle1, circle2, circle3, circle4);
+        grid.getChildren().addAll(button,button01,button2, button3,buttonDraw, circle1, circle2, circle3, circle4,caseCard);
 
 
         // showing the cards
@@ -103,10 +112,19 @@ public class Main extends Application {
 // assign the action to elements
 
         button.setOnAction((click) -> {
-            hand.getTheCardsToBeginTheGame();
-            System.out.println(caseFiles.newCard);
+            buttonDraw.setVisible(true);
+            button.setVisible(false);
+            caseFiles.createTheNewDeck();
+            caseFiles.mixTheDeck();
+            System.out.println(caseFiles.newDeck);
             hand.chooseTheMurderCase();
-            caseFiles.pickTheCardFromTheDeck(0);
+            caseCard.setFill(new ImagePattern(new Image("hand.murderCase.getPicture()")));
+            caseCard.setVisible(true);
+//            System.out.println(caseFiles.newCard);
+        });
+
+        buttonDraw.setOnAction((click) -> {
+            caseFiles.pickTheCardFromTheDeck();
             if (caseFiles.newCard.getPlace() == "GARDEN" ){
                 circle1.setFill(new ImagePattern(outside));}
             if (caseFiles.newCard.getPlace() == "HOUSE" ){
@@ -124,8 +142,6 @@ public class Main extends Application {
             if (caseFiles.newCard.getTime() == "NIGHT" ){
                 circle4.setFill(new ImagePattern(night));};
         });
-
-
 
 
         Scene scene = new Scene(grid, 900.00, 700.00, Color.BLACK);
