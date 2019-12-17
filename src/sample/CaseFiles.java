@@ -7,21 +7,20 @@ public class CaseFiles {
 
     ArrayList<Evidence> newDeck = new ArrayList<>();
     Evidence newCard;
-    Evidence newCaseFileCard;
     ArrayList<Evidence> newCaseFileCards = new ArrayList<>();
 
-Evidence MKGD = new Evidence("MAN","KNIFE", "GARDEN", "DAY","file:src/sample/assets/MKGD.png)");
-Evidence WKGD = new Evidence("WOMAN","KNIFE", "GARDEN", "DAY","file:src/sample/assets/WKGD.png)");
-Evidence MN = new Evidence("MAN","UNKNOWN", "UNKNOWN", "NIGHT","file:src/sample/assets/MN.png)");
-Evidence WKGN = new Evidence("WOMAN","KNIFE", "GARDEN", "NIGHT","file:src/sample/assets/WKGN.png)");
-Evidence WGHD = new Evidence("WOMAN","GUN", "HOUSE", "DAY","file:src/sample/assets/WGHD.png)");
-Evidence WKHD = new Evidence("WOMAN","KNIFE", "HOUSE", "DAY","file:src/sample/assets/WKHD.png)");
-Evidence MGD  = new Evidence("MAN","UNKNOWN", "GARDEN", "DAY","file:src/sample/assets/MGD.png)");
-Evidence MGHN = new Evidence("MAN","GUN", "HOUSE", "NIGHT","file:src/sample/assets/MGHN.png)");
-Evidence WGD = new Evidence("WOMAN","UNKNOWN", "GARDEN", "DAY","file:src/sample/assets/WGD.png)");
-Evidence WGGD = new Evidence("WOMAN","GUN", "GARDEN", "DAY","file:src/sample/assets/WGGD.png)");
-Evidence MGHD = new Evidence("MAN","GUN", "HOUSE", "DAY","file:src/sample/assets/MGHD.png)");
-Evidence WKN = new Evidence("WOMAN","KNIFE", "UNKNOWN", "NIGHT","file:src/sample/assets/WKN.png)");
+Evidence MKGD = new Evidence("MAN","KNIFE", "GARDEN", "DAY","MKGD");
+Evidence WKGD = new Evidence("WOMAN","KNIFE", "GARDEN", "DAY","WKGD)");
+Evidence MN = new Evidence("MAN","UNKNOWN", "UNKNOWN", "NIGHT","MN");
+Evidence WKGN = new Evidence("WOMAN","KNIFE", "GARDEN", "NIGHT","WKGN");
+Evidence WGHD = new Evidence("WOMAN","GUN", "HOUSE", "DAY","WGHD");
+Evidence WKHD = new Evidence("WOMAN","KNIFE", "HOUSE", "DAY","WKHD");
+Evidence MGD  = new Evidence("MAN","UNKNOWN", "GARDEN", "DAY","MGD");
+Evidence MGHN = new Evidence("MAN","GUN", "HOUSE", "NIGHT","MGHN");
+Evidence WGD = new Evidence("WOMAN","UNKNOWN", "GARDEN", "DAY","WGD");
+Evidence WGGD = new Evidence("WOMAN","GUN", "GARDEN", "DAY","WGGD");
+Evidence MGHD = new Evidence("MAN","GUN", "HOUSE", "DAY","MGHD");
+Evidence WKN = new Evidence("WOMAN","KNIFE", "UNKNOWN", "NIGHT","WKN");
 
     public ArrayList<Evidence> createTheNewDeck(){
 

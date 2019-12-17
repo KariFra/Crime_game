@@ -32,6 +32,8 @@ public class Main extends Application {
     Image night = new Image("file:src/sample/assets/NIGHT.png");
 
 
+
+
 //creating objects
     CaseFiles caseFiles = new CaseFiles();
     Hand hand = new Hand();
@@ -122,7 +124,7 @@ public class Main extends Application {
             System.out.println(caseFiles.newCaseFileCards.get(0));
             caseFiles.removeTheCaseFilesFromTheDeck(caseFiles.newCaseFileCards.get(0));
 //            hand.chooseTheMurderCase();
-            caseCard.setFill(new ImagePattern(new Image("caseFiles.newCaseFileCards.get(0).getPicture()")));
+            caseCard.setFill(new ImagePattern(new Image("file:src/sample/assets/"+caseFiles.newCaseFileCards.get(0).getPicture()+".png)")));
             caseCard.setVisible(true);
 //            System.out.println(caseFiles.newCard);
         });
