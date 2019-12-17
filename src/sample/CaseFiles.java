@@ -10,7 +10,7 @@ public class CaseFiles {
     ArrayList<Evidence> newCaseFileCards = new ArrayList<>();
 
 Evidence MKGD = new Evidence("MAN","KNIFE", "GARDEN", "DAY","MKGD");
-Evidence WKGD = new Evidence("WOMAN","KNIFE", "GARDEN", "DAY","WKGD)");
+Evidence WKGD = new Evidence("WOMAN","KNIFE", "GARDEN", "DAY","WKGD");
 Evidence MN = new Evidence("MAN","UNKNOWN", "UNKNOWN", "NIGHT","MN");
 Evidence WKGN = new Evidence("WOMAN","KNIFE", "GARDEN", "NIGHT","WKGN");
 Evidence WGHD = new Evidence("WOMAN","GUN", "HOUSE", "DAY","WGHD");

@@ -122,6 +122,7 @@ public class Main extends Application {
             caseFiles.pickPossibleCaseCards();
             System.out.println(caseFiles.newCaseFileCards);
             System.out.println(caseFiles.newCaseFileCards.get(0));
+            System.out.println("file:src/sample/assets/"+caseFiles.newCaseFileCards.get(0).getPicture()+".png)");
             caseFiles.removeTheCaseFilesFromTheDeck(caseFiles.newCaseFileCards.get(0));
 //            hand.chooseTheMurderCase();
             caseCard.setFill(new ImagePattern(new Image("file:src/sample/assets/"+caseFiles.newCaseFileCards.get(0).getPicture()+".png)")));
