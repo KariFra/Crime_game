@@ -117,9 +117,13 @@ public class Main extends Application {
             caseFiles.createTheNewDeck();
             caseFiles.mixTheDeck();
             System.out.println(caseFiles.newDeck);
-            hand.chooseTheMurderCase();
-            caseCard.setFill(new ImagePattern(new Image("hand.murderCase.getPicture()")));
-            caseCard.setVisible(true);
+            caseFiles.pickPossibleCaseCards();
+            System.out.println(caseFiles.newCaseFileCards);
+            caseFiles.pickCaseFileCard();
+            System.out.println(caseFiles.newCaseFileCard);
+//            hand.chooseTheMurderCase();
+//            caseCard.setFill(new ImagePattern(new Image("hand.murderCase.getPicture()")));
+//            caseCard.setVisible(true);
 //            System.out.println(caseFiles.newCard);
         });
 

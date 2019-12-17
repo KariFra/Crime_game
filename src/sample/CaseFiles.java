@@ -90,12 +90,12 @@ Evidence WKN = new Evidence("WOMAN","KNIFE", "UNKNOWN", "NIGHT","file:src/sample
     }
 
     public ArrayList<Evidence> pickPossibleCaseCards() {
-        newDeck.stream()
+        newCaseFileCards = newDeck.stream()
                 .filter(e -> e.getGender() != "UNKNOWN")
                 .filter(e -> e.getTool() != "UNKNOWN")
                 .filter(e -> e.getTime() != "UNKNOWN")
                 .filter(e -> e.getPlace() != "UNKNOWN")
-                .collect(Collectors.toList());
+                .collect(Collectors.toCollection(ArrayList::new));
         return newCaseFileCards;
     }
     public Evidence pickCaseFileCard(){
