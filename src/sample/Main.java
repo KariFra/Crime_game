@@ -1,61 +1,149 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
-public class Main extends Application{
+public class Main extends Application {
 
-    Image picture = new Image ("file:src/sample/background.png");
-    Button button;
+
+//    import graphics
+
+    Image picture = new Image("file:src/sample/assets/background.png");
+   Image unknown = new Image("file:src/sample/assets/UNKNOWN.png");
+    Image img_button01 = new Image("file:src/sample/assets/button01.png");
+    Image img_button2 = new Image("file:src/sample/assets/button2.png");
+    Image img_button3 = new Image("file:src/sample/assets/button3.png");
+    Image man = new Image("file:src/sample/assets/MAN.png");
+    Image woman = new Image("file:src/sample/assets/WOMAN.png");
+    Image knife = new Image("file:src/sample/assets/KNIFE.png");
+    Image gun = new Image("file:src/sample/assets/GUN.png");
+    Image inside = new Image("file:src/sample/assets/INSIDE.png");
+    Image outside = new Image("file:src/sample/assets/OUTSIDE.png");
+    Image day = new Image("file:src/sample/assets/DAY.png");
+    Image night = new Image("file:src/sample/assets/NIGHT.png");
+
+
+//creating objects
+    CaseFiles caseFiles = new CaseFiles();
     Hand hand = new Hand();
+    Button button01 = new Button("     0/1     ");
+    Button button2 = new Button("      2     ");
+    Button button3 = new Button("      3     ");
+    Button button = new Button("Case");
+    Stage window;
+    Circle circle1 = new Circle(40.00);
+    Circle circle2 = new Circle(40.00);
+    Circle circle3 = new Circle(40.00);
+    Circle circle4 = new Circle(40.00);
+
+
 
     public static void main(String[] args) {
-
-
         launch(args);
     }
 
-    Stage window;
-    @Override
-    public void start(Stage primaryStage) throws Exception
 
-    {
+    public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
 
 
-
-        BackgroundSize backgroundSize = new BackgroundSize(100,100,true, true, true, true);
-        BackgroundImage backgroundImage = new BackgroundImage(picture, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,backgroundSize);
+        BackgroundSize backgroundSize = new BackgroundSize(100.0D, 100.0D, true, true, true, true);
+        BackgroundImage backgroundImage = new BackgroundImage(this.picture, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
         Background background = new Background(backgroundImage);
 
-        button = new Button();
-        button.setText("Choose the case");
-        button.setOnAction(click -> {
-            hand.GetTheCardsToBeginTheGame();
-            hand.chooseTheMurderCase();});
 
-
+//Preparing the grid
         GridPane grid = new GridPane();
         grid.setBackground(background);
-        grid.setPadding(new Insets(10, 10,10,10));
-        grid.setVgap(8);
-        grid.setHgap(10);
-        GridPane.setConstraints(button, 50,50);
-        grid.getChildren().add(button);
+        grid.setPadding(new Insets(10.00, 10.00, 10.00, 10.00));
+        grid.setVgap(8.00);
+        grid.setHgap(10.00);
 
-        Scene scene  = new Scene(grid, 1200, 900, Color.BLACK);
+        circle1.setFill(new ImagePattern(unknown));
+        circle2.setFill(new ImagePattern(unknown));
+        circle3.setFill(new ImagePattern(unknown));
+        circle4.setFill(new ImagePattern(unknown));
 
 
-        window.setTitle("Crime Game");
-        window.setScene(scene);
-        window.show();
+
+//inserting elements to the grid
+
+        Main main = new Main();
+        main.fillTheGrid(grid);
+
+        GridPane.setConstraints(button, 7, 13);
+        GridPane.setConstraints(button01, 1, 13);
+        GridPane.setConstraints(button2, 3, 13);
+        GridPane.setConstraints(button3, 5, 13);
+        GridPane.setConstraints(circle1, 7, 10);
+        GridPane.setConstraints(circle2, 7, 8);
+        GridPane.setConstraints(circle3, 7, 6);
+        GridPane.setConstraints(circle4, 7, 4);
+
+
+        grid.getChildren().addAll(button,button01,button2, button3, circle1, circle2, circle3, circle4);
+
+
+        // showing the cards
+
+
+
+
+
+
+
+// assign the action to elements
+
+        button.setOnAction((click) -> {
+            hand.getTheCardsToBeginTheGame();
+            System.out.println(caseFiles.newCard);
+            hand.chooseTheMurderCase();
+            caseFiles.pickTheCardFromTheDeck(0);
+            if (caseFiles.newCard.getPlace() == "GARDEN" ){
+                circle1.setFill(new ImagePattern(outside));}
+            if (caseFiles.newCard.getPlace() == "HOUSE" ){
+                circle1.setFill(new ImagePattern(inside));}
+            if (caseFiles.newCard.getTool() == "GUN" ){
+                circle2.setFill(new ImagePattern(gun));}
+            if (caseFiles.newCard.getTool() == "KNIFE" ){
+                circle2.setFill(new ImagePattern(knife));}
+            if (caseFiles.newCard.getGender() == "WOMAN" ){
+                circle3.setFill(new ImagePattern(woman));}
+            if (caseFiles.newCard.getGender() == "MAN" ){
+                circle3.setFill(new ImagePattern(man));}
+            if (caseFiles.newCard.getTime() == "DAY" ){
+                circle4.setFill(new ImagePattern(day));}
+            if (caseFiles.newCard.getTime() == "NIGHT" ){
+                circle4.setFill(new ImagePattern(night));};
+        });
+
+
+
+
+        Scene scene = new Scene(grid, 900.00, 700.00, Color.BLACK);
+        this.window.setTitle("Crime Game");
+        this.window.setScene(scene);
+        this.window.show();
+    }
+    public void fillTheGrid (GridPane grid){
+        for(int i=0; i<8; i++){
+            ColumnConstraints column = new ColumnConstraints();
+            column.setPercentWidth(50);
+            grid.getColumnConstraints().add(column);
+        }
+        for(int i=0; i<15; i++){
+            RowConstraints row = new RowConstraints();
+            row.setPercentHeight(10);
+            grid.getRowConstraints().add(row);
+        }
+
     }
 }

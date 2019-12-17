@@ -1,23 +1,33 @@
 package sample;
 
+import javafx.scene.image.Image;
+import javafx.scene.layout.GridPane;
+import javafx.scene.paint.ImagePattern;
+
 import java.util.ArrayList;
 
+
+
 public class Hand {
+
+    Image man = new Image("file:src/sample/assets/MAN.png");
+    Image woman = new Image("file:src/sample/assets/WOMAN.png");
+    Image knife = new Image("file:src/sample/assets/KNIFE.png");
+    Image gun = new Image("file:src/sample/assets/GUN.png");
+    Image inside = new Image("file:src/sample/assets/INSIDE.png");
+    Image outside = new Image("file:src/sample/assets/OUTSIDE.png");
+    Image day = new Image("file:src/sample/assets/DAY.png");
+    Image night = new Image("file:src/sample/assets/NIGHT.png");
 
     CaseFiles caseFiles = new CaseFiles();
     ArrayList<Evidence> handDeck = new ArrayList<>();
     ArrayList<Evidence> murderCases = new ArrayList();
     ArrayList<Solution> playerOneSolutionCards = new ArrayList();
     ArrayList<Solution> playerTwoSolutionCards = new ArrayList();
+    
 
 
-
-
-
-
-
-    public void GetTheCardsToBeginTheGame(){
-
+    public void getTheCardsToBeginTheGame(){
         caseFiles.createTheNewDeck();
         caseFiles.mixTheDeck();
         Evidence card1 =caseFiles.pickTheCardFromTheDeck(0);
@@ -35,7 +45,7 @@ public class Hand {
 
     }
     public void chooseTheMurderCase(){
-        Evidence murderCase =caseFiles.pickTheCaseFilesFromTheDeck(1);
+        Evidence murderCase = caseFiles.pickTheCaseFilesFromTheDeck();
         murderCases.add(murderCase);
         caseFiles.removeTheCaseFilesFromTheDeck(murderCase);
         System.out.println(murderCases);
@@ -51,4 +61,6 @@ public class Hand {
     public void askForEvidenceComparison(){
 
     }
+
+
 }

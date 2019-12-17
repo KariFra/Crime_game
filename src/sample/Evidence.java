@@ -6,6 +6,7 @@ public class Evidence {
     private String tool;
     private String place;
     private String time;
+    private String link;
 
 
     public Evidence(String gender, String tool, String place, String time) {
@@ -30,6 +31,9 @@ public class Evidence {
     public String getTime() {
         return time;
     }
+
+
+
 
 
     @Override

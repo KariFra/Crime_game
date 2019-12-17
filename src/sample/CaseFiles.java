@@ -1,9 +1,8 @@
 package sample;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Random;
+import javafx.scene.layout.GridPane;
+
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CaseFiles {
@@ -11,6 +10,7 @@ public class CaseFiles {
     ArrayList<Evidence> newDeck = new ArrayList<>();
     Evidence newCard;
     Evidence newCaseFileCard;
+
 
 
     public ArrayList<Evidence> createTheNewDeck(){
@@ -51,33 +51,21 @@ public class CaseFiles {
     public ArrayList<Evidence> mixTheDeck(){
 
         for (int i =0; i<newDeck.size(); i++){
-            Random randome = new Random();
+            Random random = new Random();
             Evidence card = newDeck.get(i);
-            LinkedHashSet<Integer> setOfNumbers = new LinkedHashSet<>();
-            int randomePosition = randome.nextInt(newDeck.size());
-            setOfNumbers.add(randomePosition);
+            HashSet<Integer> setOfNumbers = new HashSet<>();
+            int randomPosition = random.nextInt(newDeck.size());
+            setOfNumbers.add(randomPosition);
             newDeck.remove(card);
-            newDeck.add(randomePosition,card);
+            newDeck.add(randomPosition,card);
         }
         return newDeck;
     }
 
-    public Evidence pickTheCardFromTheDeck(int n){
 
-        newCard = newDeck.get(n);
-        return newCard;
-    }
-    public Evidence pickTheCaseFilesFromTheDeck(int n){
-        List<Evidence> possibleCaseFiles = newDeck.stream()
-                .filter(e -> e.getGender() != "UNKNOWN")
-                .filter(e -> e.getTool() != "UNKNOWN")
-                .filter(e -> e.getTime() != "UNKNOWN")
-                .filter(e -> e.getPlace() != "UNKNOWN")
-                .collect(Collectors.toList());
-        newCaseFileCard = possibleCaseFiles.get(n);
-        System.out.println(" Yours new murder case is as follows " + newCaseFileCard);
-        return newCaseFileCard;
-    }
+
+
+
     public ArrayList<Evidence> removeTheCardFromTheDeck(Evidence newCard){
         int number = newDeck.indexOf(newCard);
         newDeck.remove(number);
@@ -98,5 +86,22 @@ public class CaseFiles {
         return solutionCards;
     }
 
+
+    public Evidence pickTheCardFromTheDeck(int i) {
+       newCard = newDeck.get(i);
+       return newCard;
+    }
+
+    public Evidence pickTheCaseFilesFromTheDeck() {
+        ArrayList<Evidence> possibleCaseFiles = (ArrayList<Evidence>) newDeck.stream()
+                .filter(e -> e.getGender() != "UNKNOWN")
+                .filter(e -> e.getTool() != "UNKNOWN")
+                .filter(e -> e.getTime() != "UNKNOWN")
+                .filter(e -> e.getPlace() != "UNKNOWN")
+                .collect(Collectors.toList());
+        newCaseFileCard = possibleCaseFiles.get(0);
+        System.out.println(" Yours new murder case is as follows " + newCaseFileCard);
+        return newCaseFileCard;
+    }
 }
 
