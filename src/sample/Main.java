@@ -15,7 +15,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import static sample.Hand.chosenCard;
-import static sample.Hand.opponentMurderCase;
+
 
 public class Main extends Application {
 
@@ -81,6 +81,7 @@ public class Main extends Application {
     Stage window;
     CaseFiles caseFiles = new CaseFiles();
     Hand hand = new Hand(caseFiles);
+    static Evidence opponentMurderCase;
     int oneOrZero = 0;
     int two = 0;
     int three = 0;

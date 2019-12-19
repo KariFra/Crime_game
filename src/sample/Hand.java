@@ -119,10 +119,11 @@ static Evidence chosenCard;
         return murderCase;
 
     }
+
     public Evidence chooseOpponentMurderCase(){
         caseFiles.pickPossibleCaseCards();
-        murderCase = caseFiles.pickPossibleCaseCards().get(0);
-        caseFiles.removeTheCaseFilesFromTheDeck(murderCase);
+        opponentMurderCase = caseFiles.pickPossibleCaseCards().get(0);
+        caseFiles.removeTheCaseFilesFromTheDeck(opponentMurderCase);
         return opponentMurderCase;
 
     }
