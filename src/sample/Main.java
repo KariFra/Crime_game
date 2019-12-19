@@ -14,6 +14,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import static sample.Hand.chosenCard;
+import static sample.Hand.opponentMurderCase;
+
 public class Main extends Application {
 
 
@@ -33,20 +36,17 @@ public class Main extends Application {
 
 
 
-//creating objects
-    CaseFiles caseFiles = new CaseFiles();
-    Hand hand = new Hand(caseFiles);
+//creating elements of the scene
+
     Button button01 = new Button("     0/1     ");
     Button button2 = new Button("      2     ");
     Button button3 = new Button("      3     ");
     Button button = new Button("Get the Case");
-    Button buttonCompare = new Button("Compare");
+    Button buttonCompare = new Button("Compare   ");
     Button buttonCheckYourHand = new Button("Choose card");
-
 
     Rectangle caseCard = new Rectangle(260.00, 70.00);
     Rectangle opponentCaseCard = new Rectangle(260.00, 70.00);
-
 
     Rectangle card1 = new Rectangle(260.00, 70.00);
     Rectangle card2 = new Rectangle(260.00, 70.00);
@@ -65,7 +65,6 @@ public class Main extends Application {
     Circle circle3 = new Circle(40.00);
     Circle circle4 = new Circle(40.00);
 
-
     Rectangle cardUp1 = new Rectangle(260.00, 70.00);
     Rectangle cardUp2 = new Rectangle(260.00, 70.00);
     Rectangle cardUp3 = new Rectangle(260.00, 70.00);
@@ -80,8 +79,11 @@ public class Main extends Application {
     Rectangle cardUp12 = new Rectangle(260.00, 70.00);
 
     Stage window;
-    Evidence opponentMurderCase;
-    Evidence chosenCard;
+    CaseFiles caseFiles = new CaseFiles();
+    Hand hand = new Hand(caseFiles);
+    int oneOrZero = 0;
+    int two = 0;
+    int three = 0;
 
     public static void main(String[] args) {
         launch(args);
@@ -96,17 +98,10 @@ public class Main extends Application {
         BackgroundImage backgroundImage = new BackgroundImage(this.picture, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
         Background background = new Background(backgroundImage);
 
-
-
-
         circle1.setFill(new ImagePattern(unknown));
         circle2.setFill(new ImagePattern(unknown));
         circle3.setFill(new ImagePattern(unknown));
         circle4.setFill(new ImagePattern(unknown));
-
-
-
-
 
 //Preparing the grid
         GridPane grid = new GridPane();
@@ -114,10 +109,6 @@ public class Main extends Application {
         grid.setPadding(new Insets(10.00, 5.00, 10.00, 10.00));
         grid.setVgap(8.00);
         grid.setHgap(10.00);
-
-
-
-
 
 
 //inserting elements to the grid
@@ -166,7 +157,7 @@ public class Main extends Application {
         caseCard.setVisible(false);
         buttonCompare.setVisible(false);
         buttonCheckYourHand.setVisible(false);
-        // showing the cards
+
 
 
 
@@ -175,8 +166,6 @@ public class Main extends Application {
 
 
 // assign the action to elements
-
-
 
         button.setOnAction((click) -> {
             button.setVisible(false);
@@ -187,7 +176,7 @@ public class Main extends Application {
             System.out.println(caseFiles.newDeck);
             caseFiles.pickPossibleCaseCards();
             Evidence murderCase = hand.chooseTheMurderCase();
-            opponentMurderCase = hand.chooseTheMurderCase();
+            Evidence opponentMurderCase = hand.chooseOpponentMurderCase();
             caseCard.setFill(new ImagePattern(new Image("file:src/sample/assets/"+murderCase.getPicture()+".png")));
             caseCard.setVisible(true);
             hand.BeginTheGameWithThreeCards();
@@ -220,7 +209,6 @@ public class Main extends Application {
         main.placeCardInTheRightSpot(commonEvidences);
                 });
 
-
         Scene scene = new Scene(grid, 1200.00, 1000.00, Color.BLACK);
         this.window.setTitle("Crime Game");
         this.window.setScene(scene);
@@ -230,7 +218,7 @@ public class Main extends Application {
         int i = 0;
         System.out.println(chosenCard);
         System.out.println(opponentMurderCase);
-        if (chosenCard.getPlace().equals(opponentMurderCase.getPlace())) {
+        if (chosenCard.getPlace().equals(Hand.opponentMurderCase.getPlace())) {
             i++;
         }
         if (chosenCard.getTime() == opponentMurderCase.getTime()) {
@@ -244,14 +232,12 @@ public class Main extends Application {
         }
         return i;
     }
-    int oneOrZero = 0;
-    int two = 0;
-    int three = 0;
+
     public void placeCardInTheRightSpot(int i){
 
         if (i<=1 && oneOrZero==0){
             oneOrZero++;
-            cardUp1.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+            cardUp1.setFill(new ImagePattern(new Image("file:src/sample/assets/"+ chosenCard.getPicture()+".png")));
             cardUp1.setVisible(true);
         }
         if (i<=1 && oneOrZero==1){
@@ -310,6 +296,7 @@ public class Main extends Application {
             cardUp12.setVisible(true);
         }
     }
+
     public void fillTheGrid (GridPane grid){
         for(int i=0; i<9; i++){
             ColumnConstraints column = new ColumnConstraints();

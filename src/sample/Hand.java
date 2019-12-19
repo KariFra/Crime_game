@@ -25,6 +25,10 @@ import java.util.ArrayList;
 public class Hand {
 
 static Evidence chosenCard;
+    ArrayList<Evidence> handDeck = new ArrayList<>();
+    Evidence murderCase;
+    static Evidence opponentMurderCase;
+    CaseFiles caseFiles;
 
     public Evidence displayHand(){
         Stage handCards = new Stage();
@@ -95,10 +99,6 @@ static Evidence chosenCard;
     }
 
 
-    ArrayList<Evidence> handDeck = new ArrayList<>();
-    Evidence murderCase;
-    CaseFiles caseFiles;
-
     public Hand(CaseFiles caseFiles) {
         this.caseFiles = caseFiles;
 
@@ -111,11 +111,19 @@ static Evidence chosenCard;
         }
         return handDeck;
     }
+
     public Evidence chooseTheMurderCase(){
         caseFiles.pickPossibleCaseCards();
         murderCase = caseFiles.pickPossibleCaseCards().get(0);
         caseFiles.removeTheCaseFilesFromTheDeck(murderCase);
         return murderCase;
+
+    }
+    public Evidence chooseOpponentMurderCase(){
+        caseFiles.pickPossibleCaseCards();
+        murderCase = caseFiles.pickPossibleCaseCards().get(0);
+        caseFiles.removeTheCaseFilesFromTheDeck(murderCase);
+        return opponentMurderCase;
 
     }
 
