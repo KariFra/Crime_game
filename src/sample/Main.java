@@ -40,12 +40,12 @@ public class Main extends Application {
     Button button2 = new Button("      2     ");
     Button button3 = new Button("      3     ");
     Button button = new Button("Get the Case");
-    Button buttonDraw = new Button("Draw a card");
+    Button buttonCompare = new Button("Compare");
     Button buttonCheckYourHand = new Button("Choose card");
 
 
     Rectangle caseCard = new Rectangle(260.00, 70.00);
-
+    Rectangle opponentCaseCard = new Rectangle(260.00, 70.00);
 
 
     Rectangle card1 = new Rectangle(260.00, 70.00);
@@ -80,6 +80,8 @@ public class Main extends Application {
     Rectangle cardUp12 = new Rectangle(260.00, 70.00);
 
     Stage window;
+    Evidence opponentMurderCase;
+    Evidence chosenCard;
 
     public static void main(String[] args) {
         launch(args);
@@ -127,7 +129,7 @@ public class Main extends Application {
         GridPane.setConstraints(button01, 1, 13);
         GridPane.setConstraints(button2, 3, 13);
         GridPane.setConstraints(button3, 5, 13);
-        GridPane.setConstraints(buttonDraw, 7, 11);
+        GridPane.setConstraints(buttonCompare, 7, 11);
         GridPane.setConstraints(buttonCheckYourHand,7,10);
         GridPane.setConstraints(caseCard, 6, 13);
         GridPane.setConstraints(circle1, 7, 9);
@@ -158,10 +160,11 @@ public class Main extends Application {
         GridPane.setConstraints(cardUp10, 0, 4);
         GridPane.setConstraints(cardUp11, 2, 4);
         GridPane.setConstraints(cardUp12, 4, 4);
-        grid.getChildren().addAll(buttonCheckYourHand,button,button01,button2, button3, circle1, circle2, circle3, circle4,caseCard, card1, card2, card3, card4,card5,card6,card7,card8,card9,card10,card11,card12,cardUp1,cardUp2,cardUp3,cardUp4,cardUp5,cardUp6,cardUp7,cardUp8,cardUp9,cardUp10,cardUp11,cardUp12);
+        GridPane.setConstraints(opponentCaseCard, 6, 1);
+        grid.getChildren().addAll(buttonCompare,opponentCaseCard,buttonCheckYourHand,button,button01,button2, button3, circle1, circle2, circle3, circle4,caseCard, card1, card2, card3, card4,card5,card6,card7,card8,card9,card10,card11,card12,cardUp1,cardUp2,cardUp3,cardUp4,cardUp5,cardUp6,cardUp7,cardUp8,cardUp9,cardUp10,cardUp11,cardUp12);
 
         caseCard.setVisible(false);
-        buttonDraw.setVisible(false);
+        buttonCompare.setVisible(false);
         buttonCheckYourHand.setVisible(false);
         // showing the cards
 
@@ -173,8 +176,9 @@ public class Main extends Application {
 
 // assign the action to elements
 
+
+
         button.setOnAction((click) -> {
-            buttonDraw.setVisible(true);
             button.setVisible(false);
             buttonCheckYourHand.setVisible(true);
             caseCard.setVisible(true);
@@ -183,38 +187,128 @@ public class Main extends Application {
             System.out.println(caseFiles.newDeck);
             caseFiles.pickPossibleCaseCards();
             Evidence murderCase = hand.chooseTheMurderCase();
-//            caseFiles.removeTheCaseFilesFromTheDeck(murderCase);
+            opponentMurderCase = hand.chooseTheMurderCase();
             caseCard.setFill(new ImagePattern(new Image("file:src/sample/assets/"+murderCase.getPicture()+".png")));
             caseCard.setVisible(true);
             hand.BeginTheGameWithThreeCards();
         });
 
-        buttonDraw.setOnAction((click) -> {
-            caseFiles.pickTheCardFromTheDeck();
-            if (caseFiles.newCard.getPlace() == "GARDEN" ){
+        buttonCheckYourHand.setOnAction((click) ->{
+            buttonCompare.setVisible(true);
+            hand.pickTheCardDuringGame();
+            chosenCard = hand.displayHand();
+            if (chosenCard.getPlace() == "GARDEN" ){
                 circle1.setFill(new ImagePattern(garden));}
-            if (caseFiles.newCard.getPlace() == "HOUSE" ){
+            if (chosenCard.getPlace() == "HOUSE" ){
                 circle1.setFill(new ImagePattern(house));}
-            if (caseFiles.newCard.getTool() == "GUN" ){
+            if (chosenCard.getTool() == "GUN" ){
                 circle2.setFill(new ImagePattern(gun));}
-            if (caseFiles.newCard.getTool() == "KNIFE" ){
+            if (chosenCard.getTool() == "KNIFE" ){
                 circle2.setFill(new ImagePattern(knife));}
-            if (caseFiles.newCard.getGender() == "WOMAN" ){
+            if (chosenCard.getGender() == "WOMAN" ){
                 circle3.setFill(new ImagePattern(woman));}
-            if (caseFiles.newCard.getGender() == "MAN" ){
+            if (chosenCard.getGender() == "MAN" ){
                 circle3.setFill(new ImagePattern(man));}
-            if (caseFiles.newCard.getTime() == "DAY" ){
+            if (chosenCard.getTime() == "DAY" ){
                 circle4.setFill(new ImagePattern(day));}
-            if (caseFiles.newCard.getTime() == "NIGHT" ){
-                circle4.setFill(new ImagePattern(night));};
+            if (chosenCard.getTime() == "NIGHT" ){
+                circle4.setFill(new ImagePattern(night));}
         });
-        buttonCheckYourHand.setOnAction((click) ->
-                hand.displayHand());
+
+        buttonCompare.setOnAction((click) -> {
+        int commonEvidences = main.askForEvidenceComparison();
+        main.placeCardInTheRightSpot(commonEvidences);
+                });
+
 
         Scene scene = new Scene(grid, 1200.00, 1000.00, Color.BLACK);
         this.window.setTitle("Crime Game");
         this.window.setScene(scene);
         this.window.show();
+    }
+    public int askForEvidenceComparison() {
+        int i = 0;
+        System.out.println(chosenCard);
+        System.out.println(opponentMurderCase);
+        if (chosenCard.getPlace().equals(opponentMurderCase.getPlace())) {
+            i++;
+        }
+        if (chosenCard.getTime() == opponentMurderCase.getTime()) {
+            i++;
+        }
+        if (chosenCard.getGender() == opponentMurderCase.getGender()) {
+            i++;
+        }
+        if (chosenCard.getTool() == opponentMurderCase.getTool()) {
+            i++;
+        }
+        return i;
+    }
+    int oneOrZero = 0;
+    int two = 0;
+    int three = 0;
+    public void placeCardInTheRightSpot(int i){
+
+        if (i<=1 && oneOrZero==0){
+            oneOrZero++;
+            cardUp1.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+            cardUp1.setVisible(true);
+        }
+        if (i<=1 && oneOrZero==1){
+            oneOrZero++;
+            cardUp4.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+            cardUp4.setVisible(true);
+        }
+        if (i<=1 && oneOrZero==2){
+            oneOrZero++;
+            cardUp7.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+            cardUp7.setVisible(true);
+        }
+        if (i<=1 && oneOrZero==3){
+            oneOrZero++;
+            cardUp10.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+            cardUp10.setVisible(true);
+        }
+        if (i<=2 && two==0){
+            two++;
+            cardUp2.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+            cardUp2.setVisible(true);
+        }
+        if (i<=2 && two==1){
+            two++;
+            cardUp5.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+            cardUp5.setVisible(true);
+        }
+        if (i<=2 && two==2){
+            two++;
+            cardUp8.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+            cardUp8.setVisible(true);
+        }
+        if (i<=2 && two==3){
+            two++;
+            cardUp11.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+            cardUp11.setVisible(true);
+        }
+        if (i<=3 && three==0){
+            three++;
+            cardUp3.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+            cardUp3.setVisible(true);
+        }
+        if (i<=3 && three==1){
+            three++;
+            cardUp6.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+            cardUp6.setVisible(true);
+        }
+        if (i<=3 && three==2){
+            three++;
+            cardUp9.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+            cardUp9.setVisible(true);
+        }
+        if (i<=3 && three==3){
+            three++;
+            cardUp12.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+            cardUp12.setVisible(true);
+        }
     }
     public void fillTheGrid (GridPane grid){
         for(int i=0; i<9; i++){
@@ -239,6 +333,7 @@ public class Main extends Application {
         GridPane.setConstraints(stack1, 1, 0);
         GridPane.setConstraints(stack2, 3, 0);
         GridPane.setConstraints(stack3, 5, 0);
+
         grid.getChildren().addAll(stack1,stack2,stack3);
 
 

@@ -57,7 +57,8 @@ public class Evidence {
         if (!gender.equals(evidence.gender)) return false;
         if (!tool.equals(evidence.tool)) return false;
         if (!place.equals(evidence.place)) return false;
-        return time.equals(evidence.time);
+        if (!time.equals(evidence.time)) return false;
+        return picture.equals(evidence.picture);
     }
 
     @Override
@@ -66,6 +67,7 @@ public class Evidence {
         result = 31 * result + tool.hashCode();
         result = 31 * result + place.hashCode();
         result = 31 * result + time.hashCode();
+        result = 31 * result + picture.hashCode();
         return result;
     }
 }
