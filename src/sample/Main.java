@@ -103,8 +103,7 @@ public class Main extends Application {
         circle4.setFill(new ImagePattern(unknown));
 
 
-        caseCard.setVisible(false);
-        buttonDraw.setVisible(false);
+
 
 
 //Preparing the grid
@@ -123,78 +122,6 @@ public class Main extends Application {
 
         Main main = new Main();
         main.fillTheGrid(grid);
-
-
-
-        // showing the cards
-
-
-
-
-
-
-
-// assign the action to elements
-
-        button.setOnAction((click) -> {
-            buttonDraw.setVisible(true);
-            button.setVisible(false);
-            caseFiles.createTheNewDeck();
-            caseFiles.mixTheDeck();
-            System.out.println(caseFiles.newDeck);
-            caseFiles.pickPossibleCaseCards();
-            Evidence murderCase = hand.chooseTheMurderCase();
-            caseFiles.removeTheCaseFilesFromTheDeck(murderCase);
-            caseCard.setFill(new ImagePattern(new Image("file:src/sample/assets/"+murderCase.getPicture()+".png")));
-            caseCard.setVisible(true);
-            hand.BeginTheGameWithThreeCards();
-        });
-
-        buttonDraw.setOnAction((click) -> {
-            caseFiles.pickTheCardFromTheDeck();
-            if (caseFiles.newCard.getPlace() == "GARDEN" ){
-                circle1.setFill(new ImagePattern(garden));}
-            if (caseFiles.newCard.getPlace() == "HOUSE" ){
-                circle1.setFill(new ImagePattern(house));}
-            if (caseFiles.newCard.getTool() == "GUN" ){
-                circle2.setFill(new ImagePattern(gun));}
-            if (caseFiles.newCard.getTool() == "KNIFE" ){
-                circle2.setFill(new ImagePattern(knife));}
-            if (caseFiles.newCard.getGender() == "WOMAN" ){
-                circle3.setFill(new ImagePattern(woman));}
-            if (caseFiles.newCard.getGender() == "MAN" ){
-                circle3.setFill(new ImagePattern(man));}
-            if (caseFiles.newCard.getTime() == "DAY" ){
-                circle4.setFill(new ImagePattern(day));}
-            if (caseFiles.newCard.getTime() == "NIGHT" ){
-                circle4.setFill(new ImagePattern(night));};
-        });
-        buttonCheckYourHand.setOnAction((click) ->
-                hand.displayHand());
-
-        Scene scene = new Scene(grid, 1200.00, 1000.00, Color.BLACK);
-        window.setTitle("Crime Game");
-        window.setScene(scene);
-        window.show();
-    }
-    public void fillTheGrid (GridPane grid){
-        for(int i=0; i<9; i++){
-            ColumnConstraints column = new ColumnConstraints();
-            column.setPercentWidth(50);
-            grid.getColumnConstraints().add(column);
-        }
-        for(int i=0; i<15; i++){
-            RowConstraints row = new RowConstraints();
-            row.setPercentHeight(10);
-            grid.getRowConstraints().add(row);
-        }
-
-        StackPane stack1 = new StackPane();
-        stack1.getChildren().addAll(new Rectangle(100,30,Color.WHITE), new Label("0/1"));
-        StackPane stack2 = new StackPane();
-        stack2.getChildren().addAll(new Rectangle(100,30,Color.WHITE), new Label("2"));
-        StackPane stack3 = new StackPane();
-        stack3.getChildren().addAll(new Rectangle(100,30,Color.WHITE), new Label("3"));
 
         GridPane.setConstraints(button, 7, 13);
         GridPane.setConstraints(button01, 1, 13);
@@ -231,12 +158,90 @@ public class Main extends Application {
         GridPane.setConstraints(cardUp10, 0, 4);
         GridPane.setConstraints(cardUp11, 2, 4);
         GridPane.setConstraints(cardUp12, 4, 4);
+        grid.getChildren().addAll(buttonCheckYourHand,button,button01,button2, button3, circle1, circle2, circle3, circle4,caseCard, card1, card2, card3, card4,card5,card6,card7,card8,card9,card10,card11,card12,cardUp1,cardUp2,cardUp3,cardUp4,cardUp5,cardUp6,cardUp7,cardUp8,cardUp9,cardUp10,cardUp11,cardUp12);
+
+        caseCard.setVisible(false);
+        buttonDraw.setVisible(false);
+        buttonCheckYourHand.setVisible(false);
+        // showing the cards
+
+
+
+
+
+
+
+// assign the action to elements
+
+        button.setOnAction((click) -> {
+            buttonDraw.setVisible(true);
+            button.setVisible(false);
+            buttonCheckYourHand.setVisible(true);
+            caseCard.setVisible(true);
+            caseFiles.createTheNewDeck();
+            caseFiles.mixTheDeck();
+            System.out.println(caseFiles.newDeck);
+            caseFiles.pickPossibleCaseCards();
+            Evidence murderCase = hand.chooseTheMurderCase();
+//            caseFiles.removeTheCaseFilesFromTheDeck(murderCase);
+            caseCard.setFill(new ImagePattern(new Image("file:src/sample/assets/"+murderCase.getPicture()+".png")));
+            caseCard.setVisible(true);
+            hand.BeginTheGameWithThreeCards();
+        });
+
+        buttonDraw.setOnAction((click) -> {
+            caseFiles.pickTheCardFromTheDeck();
+            if (caseFiles.newCard.getPlace() == "GARDEN" ){
+                circle1.setFill(new ImagePattern(garden));}
+            if (caseFiles.newCard.getPlace() == "HOUSE" ){
+                circle1.setFill(new ImagePattern(house));}
+            if (caseFiles.newCard.getTool() == "GUN" ){
+                circle2.setFill(new ImagePattern(gun));}
+            if (caseFiles.newCard.getTool() == "KNIFE" ){
+                circle2.setFill(new ImagePattern(knife));}
+            if (caseFiles.newCard.getGender() == "WOMAN" ){
+                circle3.setFill(new ImagePattern(woman));}
+            if (caseFiles.newCard.getGender() == "MAN" ){
+                circle3.setFill(new ImagePattern(man));}
+            if (caseFiles.newCard.getTime() == "DAY" ){
+                circle4.setFill(new ImagePattern(day));}
+            if (caseFiles.newCard.getTime() == "NIGHT" ){
+                circle4.setFill(new ImagePattern(night));};
+        });
+        buttonCheckYourHand.setOnAction((click) ->
+                hand.displayHand());
+
+        Scene scene = new Scene(grid, 1200.00, 1000.00, Color.BLACK);
+        this.window.setTitle("Crime Game");
+        this.window.setScene(scene);
+        this.window.show();
+    }
+    public void fillTheGrid (GridPane grid){
+        for(int i=0; i<9; i++){
+            ColumnConstraints column = new ColumnConstraints();
+            column.setPercentWidth(50);
+            grid.getColumnConstraints().add(column);
+        }
+        for(int i=0; i<15; i++){
+            RowConstraints row = new RowConstraints();
+            row.setPercentHeight(10);
+            grid.getRowConstraints().add(row);
+        }
+
+        StackPane stack1 = new StackPane();
+        stack1.getChildren().addAll(new Rectangle(100,30,Color.WHITE), new Label("0/1"));
+        StackPane stack2 = new StackPane();
+        stack2.getChildren().addAll(new Rectangle(100,30,Color.WHITE), new Label("2"));
+        StackPane stack3 = new StackPane();
+        stack3.getChildren().addAll(new Rectangle(100,30,Color.WHITE), new Label("3"));
+
+
         GridPane.setConstraints(stack1, 1, 0);
         GridPane.setConstraints(stack2, 3, 0);
         GridPane.setConstraints(stack3, 5, 0);
+        grid.getChildren().addAll(stack1,stack2,stack3);
 
 
-        grid.getChildren().addAll(stack1,stack2,stack3,buttonCheckYourHand,button,button01,button2, button3, circle1, circle2, circle3, circle4,caseCard, card1, card2, card3, card4,card5,card6,card7,card8,card9,card10,card11,card12,cardUp1,cardUp2,cardUp3,cardUp4,cardUp5,cardUp6,cardUp7,cardUp8,cardUp9,cardUp10,cardUp11,cardUp12);
 
     }
 }

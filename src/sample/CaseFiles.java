@@ -92,8 +92,8 @@ Evidence WKHN = new Evidence("WOMAN","KNIFE", "HOUSE", "NIGHT","WKHN");
         newDeck.remove(number);
         return newDeck;
     }
-    public ArrayList<Evidence> removeTheCaseFilesFromTheDeck(Evidence newCaseFileCard){
-        int number = newDeck.indexOf(newCaseFileCard);
+    public ArrayList<Evidence> removeTheCaseFilesFromTheDeck(Evidence murderCase){
+        int number = newDeck.indexOf(murderCase);
         newDeck.remove(number);
         return newDeck;
     }

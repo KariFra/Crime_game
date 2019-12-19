@@ -23,12 +23,13 @@ public class Hand {
         Stage handCards = new Stage();
         handCards.setTitle("Your deck");
         handCards.setMinWidth(300);
-        handCards.initModality(Modality.APPLICATION_MODAL);
+//        handCards.initModality(Modality.APPLICATION_MODAL);
 
 
         Rectangle card1 = new Rectangle(260.00, 70.00);
         Rectangle card2 = new Rectangle(260.00, 70.00);
         Rectangle card3 = new Rectangle(260.00, 70.00);
+        System.out.println(handDeck);
 
         card1.setFill(new ImagePattern(new Image("file:src/sample/assets/"+handDeck.get(0).getPicture()+".png")));
         card2.setFill(new ImagePattern(new Image("file:src/sample/assets/"+handDeck.get(1).getPicture()+".png")));
@@ -53,7 +54,7 @@ public class Hand {
     }
 
     public ArrayList<Evidence> BeginTheGameWithThreeCards() {
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             handDeck.add(caseFiles.pickTheCardFromTheDeck());
             caseFiles.removeTheCardFromTheDeck(caseFiles.pickTheCardFromTheDeck());
         }
