@@ -245,6 +245,7 @@ public class Main extends Application {
         });
 
         buttonCompare.setOnAction((click) -> {
+            numberOfCommonEvidencesOpponent = 0;
             circle1.setVisible(false);
             circle2.setVisible(false);
             circle3.setVisible(false);
@@ -316,6 +317,7 @@ public class Main extends Application {
         });
 
         finishRound.setOnAction((click) ->{
+            numberOfCommonEvidences = 0;
             buttonCheckYourHand.setVisible(true);
             finishRound.setVisible(false);
             guess.setVisible(false);
@@ -389,7 +391,7 @@ public class Main extends Application {
         this.window.show();
     }
     public int askForEvidenceComparison(Evidence chosenCard, Evidence opponentMurderCase) {
-
+        numberOfCommonEvidences = 0;
         System.out.println("chosen "+chosenCard);
         System.out.println("opponent "+opponentMurderCase);
         if (chosenCard.getPlace().equals(opponentMurderCase.getPlace())) {
@@ -404,7 +406,7 @@ public class Main extends Application {
         if (chosenCard.getTool().equals(opponentMurderCase.getTool())) {
             numberOfCommonEvidences++;
         }
-
+         System.out.println(numberOfCommonEvidences);
         return numberOfCommonEvidences;
     }
 
