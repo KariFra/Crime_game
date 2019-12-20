@@ -86,7 +86,6 @@ Evidence WKHN = new Evidence("WOMAN","KNIFE", "HOUSE", "NIGHT","WKHN");
         return newDeck;
     }
 
-
     public ArrayList<Evidence> removeTheCardFromTheDeck(Evidence newCard){
         int number = newDeck.indexOf(newCard);
         newDeck.remove(number);
@@ -98,7 +97,6 @@ Evidence WKHN = new Evidence("WOMAN","KNIFE", "HOUSE", "NIGHT","WKHN");
         newDeck.remove(number);
         return newDeck;
     }
-
 
     public Evidence pickTheCardFromTheDeck() {
        newCard = newDeck.get(0);
