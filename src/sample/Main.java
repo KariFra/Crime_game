@@ -44,6 +44,8 @@ public class Main extends Application {
     Button button = new Button("Get the Case");
     Button buttonCompare = new Button("Compare   ");
     Button buttonCheckYourHand = new Button("Choose card");
+    Button finishRound = new Button("Finish round");
+    Button guess = new Button("Guess");
 
     Rectangle caseCard = new Rectangle(260.00, 70.00);
     Rectangle opponentCaseCard = new Rectangle(260.00, 70.00);
@@ -82,10 +84,16 @@ public class Main extends Application {
     CaseFiles caseFiles = new CaseFiles();
     Hand hand = new Hand(caseFiles);
     Evidence opponentMurderCase;
+    Evidence opponentChosenCard;
+    Evidence murderCase;
+    int numberOfCommonEvidencesOpponent = 0;
     int numberOfCommonEvidences = 0;
     int oneOrZero = 0;
     int two = 0;
     int three = 0;
+    int oneOrZeroOpponent = 0;
+    int twoOpponent = 0;
+    int threeOpponent = 0;
 
     public static void main(String[] args) {
         launch(args);
@@ -124,6 +132,9 @@ public class Main extends Application {
         GridPane.setConstraints(button3, 5, 13);
         GridPane.setConstraints(buttonCompare, 7, 11);
         GridPane.setConstraints(buttonCheckYourHand,7,10);
+        GridPane.setConstraints(finishRound, 7, 11);
+        GridPane.setConstraints(guess,7,10);
+
         GridPane.setConstraints(caseCard, 6, 13);
         GridPane.setConstraints(circle1, 7, 9);
         GridPane.setConstraints(circle2, 7, 7);
@@ -154,11 +165,13 @@ public class Main extends Application {
         GridPane.setConstraints(cardUp11, 2, 4);
         GridPane.setConstraints(cardUp12, 4, 4);
         GridPane.setConstraints(opponentCaseCard, 6, 1);
-        grid.getChildren().addAll(buttonCompare,opponentCaseCard,buttonCheckYourHand,button,button01,button2, button3, circle1, circle2, circle3, circle4,caseCard, card1, card2, card3, card4,card5,card6,card7,card8,card9,card10,card11,card12,cardUp1,cardUp2,cardUp3,cardUp4,cardUp5,cardUp6,cardUp7,cardUp8,cardUp9,cardUp10,cardUp11,cardUp12);
+        grid.getChildren().addAll(guess,finishRound,buttonCompare,opponentCaseCard,buttonCheckYourHand,button,button01,button2, button3, circle1, circle2, circle3, circle4,caseCard, card1, card2, card3, card4,card5,card6,card7,card8,card9,card10,card11,card12,cardUp1,cardUp2,cardUp3,cardUp4,cardUp5,cardUp6,cardUp7,cardUp8,cardUp9,cardUp10,cardUp11,cardUp12);
 
         caseCard.setVisible(false);
         buttonCompare.setVisible(false);
         buttonCheckYourHand.setVisible(false);
+        finishRound.setVisible(false);
+        guess.setVisible(false);
         cardUp1.setVisible(false);
         cardUp2.setVisible(false);
         cardUp3.setVisible(false);
@@ -171,6 +184,18 @@ public class Main extends Application {
         cardUp10.setVisible(false);
         cardUp11.setVisible(false);
         cardUp12.setVisible(false);
+        card1.setVisible(false);
+        card2.setVisible(false);
+        card3.setVisible(false);
+        card4.setVisible(false);
+        card5.setVisible(false);
+        card6.setVisible(false);
+        card7.setVisible(false);
+        card8.setVisible(false);
+        card9.setVisible(false);
+        card10.setVisible(false);
+        card11.setVisible(false);
+        card12.setVisible(false);
 
 
 
@@ -189,7 +214,7 @@ public class Main extends Application {
             caseFiles.mixTheDeck();
             System.out.println(caseFiles.newDeck);
             caseFiles.pickPossibleCaseCards();
-            Evidence murderCase = hand.chooseTheMurderCase();
+            murderCase = hand.chooseTheMurderCase();
             opponentMurderCase = hand.chooseOpponentMurderCase();
             caseCard.setFill(new ImagePattern(new Image("file:src/sample/assets/"+murderCase.getPicture()+".png")));
             caseCard.setVisible(true);
@@ -198,6 +223,7 @@ public class Main extends Application {
 
         buttonCheckYourHand.setOnAction((click) ->{
             buttonCompare.setVisible(true);
+            buttonCheckYourHand.setVisible(false);
             hand.pickTheCardDuringGame();
             chosenCard = hand.displayHand();
             if (chosenCard.getPlace() == "GARDEN" ){
@@ -219,21 +245,153 @@ public class Main extends Application {
         });
 
         buttonCompare.setOnAction((click) -> {
-        main.askForEvidenceComparison(opponentMurderCase);
-        System.out.println(numberOfCommonEvidences);
-        main.placeCardInTheRightSpot(numberOfCommonEvidences);
+            circle1.setVisible(false);
+            circle2.setVisible(false);
+            circle3.setVisible(false);
+            circle4.setVisible(false);
+            buttonCompare.setVisible(false);
+            finishRound.setVisible(true);
+            guess.setVisible(true);
+            numberOfCommonEvidencesOpponent = main.askForEvidenceComparison(chosenCard,opponentMurderCase);
+            if(numberOfCommonEvidencesOpponent==0 ||numberOfCommonEvidencesOpponent==1){
+                oneOrZeroOpponent++;
+            }
+            if(numberOfCommonEvidencesOpponent==2){
+                twoOpponent++;
+            }
+            if(numberOfCommonEvidencesOpponent==3){
+                threeOpponent++;
+            }
+        System.out.println(numberOfCommonEvidencesOpponent);
+            if (numberOfCommonEvidencesOpponent<=1 && oneOrZeroOpponent==1){
+                cardUp1.setFill(new ImagePattern(new Image("file:src/sample/assets/"+ chosenCard.getPicture()+".png")));
+                cardUp1.setVisible(true);
+            }
+            if (numberOfCommonEvidencesOpponent<=1 && oneOrZeroOpponent==2){
+                cardUp4.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                cardUp4.setVisible(true);
+            }
+            if (numberOfCommonEvidencesOpponent<=1 && oneOrZeroOpponent==3){
+                cardUp7.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                cardUp7.setVisible(true);
+            }
+            if (numberOfCommonEvidencesOpponent<=1 && oneOrZeroOpponent==4){
+                cardUp10.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                cardUp10.setVisible(true);
+            }
+            if (numberOfCommonEvidencesOpponent==2 && twoOpponent==1){
+                cardUp2.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                cardUp2.setVisible(true);
+            }
+            if (numberOfCommonEvidencesOpponent==2 && twoOpponent==2){
+                cardUp5.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                cardUp5.setVisible(true);
+            }
+            if (numberOfCommonEvidencesOpponent==2 && twoOpponent==3){
+                cardUp8.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                cardUp8.setVisible(true);
+            }
+            if (numberOfCommonEvidencesOpponent==2 && twoOpponent==4){
+                cardUp11.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                cardUp11.setVisible(true);
+            }
+            if (numberOfCommonEvidencesOpponent==3 && threeOpponent==1){
+                cardUp3.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                cardUp3.setVisible(true);
+            }
+            if (numberOfCommonEvidences==3 && threeOpponent==2){
+                cardUp6.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                cardUp6.setVisible(true);
+            }
+            if (numberOfCommonEvidencesOpponent==3 && threeOpponent==3){
+                cardUp9.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                cardUp9.setVisible(true);
+            }
+            if (numberOfCommonEvidencesOpponent==3 && threeOpponent==4){
+                cardUp12.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                cardUp12.setVisible(true);
+            }
 
-                });
+            numberOfCommonEvidencesOpponent = 0;
+        });
+
+        finishRound.setOnAction((click) ->{
+            buttonCheckYourHand.setVisible(true);
+            finishRound.setVisible(false);
+            guess.setVisible(false);
+            opponentChosenCard = caseFiles.pickTheCardFromTheDeck();
+            caseFiles.removeTheCardFromTheDeck(opponentChosenCard);
+            numberOfCommonEvidences = main.askForEvidenceComparison(opponentChosenCard,murderCase);
+            if(numberOfCommonEvidences==0 ||numberOfCommonEvidences==1){
+                oneOrZero++;
+            }
+            if(numberOfCommonEvidences==2){
+                two++;
+            }
+            if(numberOfCommonEvidences==3){
+                three++;
+            }
+            if (numberOfCommonEvidences<=1 && oneOrZero==1){
+                card1.setFill(new ImagePattern(new Image("file:src/sample/assets/"+ chosenCard.getPicture()+".png")));
+                card1.setVisible(true);
+            }
+            if (numberOfCommonEvidences<=1 && oneOrZero==2){
+                card4.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                card4.setVisible(true);
+            }
+            if (numberOfCommonEvidences<=1 && oneOrZero==3){
+                card7.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                card7.setVisible(true);
+            }
+            if (numberOfCommonEvidences<=1 && oneOrZero==4){
+                card10.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                card10.setVisible(true);
+            }
+            if (numberOfCommonEvidences==2 && two==1){
+                card2.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                card2.setVisible(true);
+            }
+            if (numberOfCommonEvidences==2 && two==2){
+                card5.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                card5.setVisible(true);
+            }
+            if (numberOfCommonEvidences==2 && two==3){
+                card8.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                card8.setVisible(true);
+            }
+            if (numberOfCommonEvidences==2 && two==4){
+                card11.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                card11.setVisible(true);
+            }
+            if (numberOfCommonEvidences==3 && three==1){
+                card3.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                card3.setVisible(true);
+            }
+            if (numberOfCommonEvidences==3 && three==2){
+                card6.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                card6.setVisible(true);
+            }
+            if (numberOfCommonEvidences==3 && three==3){
+                card9.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                card9.setVisible(true);
+            }
+            if (numberOfCommonEvidences==3 && three==4){
+                card12.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                card12.setVisible(true);
+            }
+
+            numberOfCommonEvidences = 0;
+        });
 
         Scene scene = new Scene(grid, 1200.00, 1000.00, Color.BLACK);
         this.window.setTitle("Crime Game");
         this.window.setScene(scene);
         this.window.show();
     }
-    public int askForEvidenceComparison(Evidence opponentMurderCase) {
+    public int askForEvidenceComparison(Evidence chosenCard, Evidence opponentMurderCase) {
 
-        System.out.println(chosenCard);
-        System.out.println(opponentMurderCase);
+        System.out.println("chosen "+chosenCard);
+        System.out.println("opponent "+opponentMurderCase);
         if (chosenCard.getPlace().equals(opponentMurderCase.getPlace())) {
             numberOfCommonEvidences++;
         }
@@ -246,72 +404,11 @@ public class Main extends Application {
         if (chosenCard.getTool().equals(opponentMurderCase.getTool())) {
             numberOfCommonEvidences++;
         }
+
         return numberOfCommonEvidences;
     }
 
-    public void placeCardInTheRightSpot(int numberOfCommonEvidences){
 
-        if (numberOfCommonEvidences<=1 && oneOrZero==0){
-            oneOrZero++;
-            cardUp1.setFill(new ImagePattern(new Image("file:src/sample/assets/"+ chosenCard.getPicture()+".png")));
-            cardUp1.setVisible(true);
-        }
-        if (numberOfCommonEvidences<=1 && oneOrZero==1){
-            oneOrZero++;
-            cardUp4.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
-            cardUp4.setVisible(true);
-        }
-        if (numberOfCommonEvidences<=1 && oneOrZero==2){
-            oneOrZero++;
-            cardUp7.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
-            cardUp7.setVisible(true);
-        }
-        if (numberOfCommonEvidences<=1 && oneOrZero==3){
-            oneOrZero++;
-            cardUp10.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
-            cardUp10.setVisible(true);
-        }
-        if (numberOfCommonEvidences<=2 && two==0){
-            two++;
-            cardUp2.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
-            cardUp2.setVisible(true);
-        }
-        if (numberOfCommonEvidences<=2 && two==1){
-            two++;
-            cardUp5.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
-            cardUp5.setVisible(true);
-        }
-        if (numberOfCommonEvidences<=2 && two==2){
-            two++;
-            cardUp8.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
-            cardUp8.setVisible(true);
-        }
-        if (numberOfCommonEvidences<=2 && two==3){
-            two++;
-            cardUp11.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
-            cardUp11.setVisible(true);
-        }
-        if (numberOfCommonEvidences<=3 && three==0){
-            three++;
-            cardUp3.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
-            cardUp3.setVisible(true);
-        }
-        if (numberOfCommonEvidences<=3 && three==1){
-            three++;
-            cardUp6.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
-            cardUp6.setVisible(true);
-        }
-        if (numberOfCommonEvidences<=3 && three==2){
-            three++;
-            cardUp9.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
-            cardUp9.setVisible(true);
-        }
-        if (numberOfCommonEvidences<=3 && three==3){
-            three++;
-            cardUp12.setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
-            cardUp12.setVisible(true);
-        }
-    }
 
     public void fillTheGrid (GridPane grid){
         for(int i=0; i<9; i++){
