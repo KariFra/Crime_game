@@ -94,6 +94,7 @@ public class Main extends Application {
     int oneOrZeroOpponent = 0;
     int twoOpponent = 0;
     int threeOpponent = 0;
+    int clickCalculator;
 
     public static void main(String[] args) {
         launch(args);
@@ -222,6 +223,11 @@ public class Main extends Application {
         });
 
         buttonCheckYourHand.setOnAction((click) ->{
+            clickCalculator++;
+            circle1.setVisible(true);
+            circle2.setVisible(true);
+            circle3.setVisible(true);
+            circle4.setVisible(true);
             buttonCompare.setVisible(true);
             buttonCheckYourHand.setVisible(false);
             hand.pickTheCardDuringGame();
@@ -318,13 +324,14 @@ public class Main extends Application {
 
         finishRound.setOnAction((click) ->{
             numberOfCommonEvidences = 0;
-            buttonCheckYourHand.setVisible(true);
+            if (clickCalculator<5){buttonCheckYourHand.setVisible(true);}
+            if (clickCalculator==5){guess.setVisible(true);}
             finishRound.setVisible(false);
             guess.setVisible(false);
             opponentChosenCard = caseFiles.pickTheCardFromTheDeck();
             caseFiles.removeTheCardFromTheDeck(opponentChosenCard);
             numberOfCommonEvidences = main.askForEvidenceComparison(opponentChosenCard,murderCase);
-            if(numberOfCommonEvidences==0 ||numberOfCommonEvidences==1){
+            if(numberOfCommonEvidences==0 || numberOfCommonEvidences==1){
                 oneOrZero++;
             }
             if(numberOfCommonEvidences==2){
