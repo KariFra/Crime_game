@@ -93,7 +93,7 @@ public class Main extends Application {
     Evidence opponentMurderCase;
     Evidence opponentChosenCard;
     Evidence murderCase;
-    String opponentguessedCard;
+    String opponentGuessedCard;
     String finalCardGuess;
     int numberOfCommonEvidencesOpponent = 0;
     int numberOfCommonEvidences = 0;
@@ -245,7 +245,6 @@ public class Main extends Application {
             hand.pickTheCardDuringGame();
             chosenCard = hand.displayHand();
 
-
             if (chosenCard.getPlace() == "GARDEN" ){
                 circle1.setFill(new ImagePattern(garden));}
             if (chosenCard.getPlace() == "HOUSE" ){
@@ -262,9 +261,6 @@ public class Main extends Application {
                 circle4.setFill(new ImagePattern(day));}
             if (chosenCard.getTime() == "NIGHT" ){
                 circle4.setFill(new ImagePattern(night));}
-
-
-
         });
 
         buttonCompare.setOnAction((click) -> {
@@ -343,12 +339,18 @@ public class Main extends Application {
             guessButton.setVisible(true);
             numberOfCommonEvidences = 0;
             if (clickCalculator<6){buttonCheckYourHand.setVisible(true);}
-            if (clickCalculator==6){String card = main.opponentGuess();
-                if (card.equals(murderCase)){
+            if (clickCalculator==6){finalCardGuess =main.opponentGuess(murderCase);
+                if (finalCardGuess.equals(murderCase.printOutGender()+" "+murderCase.printOutTime()+" "+murderCase.printOutTool()+" "+murderCase.printOutPlace())){
 
                     System.out.println("You were too slow this time...");
                 } else{
                     System.out.println("You still have chance to solve the case");
+                }
+            }
+            if (card3.isVisible() && card6.isVisible() || card2.isVisible() && card3.isVisible()){
+                finalCardGuess =main.opponentGuess(murderCase);
+                if (finalCardGuess.equals(murderCase.printOutGender()+" "+murderCase.printOutTime()+" "+murderCase.printOutTool()+" "+murderCase.printOutPlace())){
+                    System.out.println("You were too slow this time...");
                 }
             }
             finishRound.setVisible(false);
@@ -419,18 +421,17 @@ public class Main extends Application {
         });
 
         guessButton.setOnAction((click) ->{
-            opponentguessedCard = guess.guessOpponentCard();
-            System.out.println("The card that I guessed "+opponentguessedCard);
+            opponentGuessedCard = guess.guessOpponentCard();
+            System.out.println("The card that I guessed "+opponentGuessedCard);
             String opponentCard = opponentMurderCase.printOutGender()+" "+opponentMurderCase.printOutTime()+" "+opponentMurderCase.printOutTool()+" "+opponentMurderCase.printOutPlace();
             System.out.println("The card that was murder case "+opponentCard);
-            if (opponentguessedCard.equals(opponentCard)){
+            if (opponentGuessedCard.equals(opponentCard)){
 //                main.answerPrint(grid,new Label("You were right Scherlock!"));
                 System.out.println("You were right Scherlock!");
             } else{
                 System.out.println("Not even close...");
             }
         });
-
 
         Scene scene = new Scene(grid, 1400.00, 1000.00, Color.BLACK);
         scene.getStylesheets().add("file:src/sample/style.css");
@@ -492,8 +493,6 @@ public class Main extends Application {
 
         grid.getChildren().addAll(stack1,stack2,stack3,stack4,stack5,stack6);
 
-
-
     }
 
 //    public void answerPrint(GridPane grid,Label label){
@@ -507,12 +506,13 @@ public class Main extends Application {
 //        st.setToY(1000);
 //        st.play();
 //    }
-    public String opponentGuess(){
+    public String opponentGuess(Evidence murderCase){
         Random random = new Random();
         int numberPlace = random.nextInt(1);
         int numberTool = random.nextInt(1);
         int numberGender = random.nextInt(1);
         int numberTime = random.nextInt(1);
+        System.out.println(murderCase);
         String place;
         String tool;
         String gender;
@@ -561,8 +561,8 @@ public class Main extends Application {
             } else {gender = "MAN";}
             finalCardGuess = gender+" "+time+" "+tool+" "+place;
         }
-
        return finalCardGuess;
     }
+
 
 }
