@@ -46,6 +46,18 @@ public class Evidence {
                 ", time='" + time + '\'' +
                 '}';
     }
+    public String printOutGender(){
+        return gender;
+    }
+    public String printOutTool(){
+        return tool;
+    }
+    public String printOutPlace(){
+        return place;
+    }
+    public String printOutTime(){
+        return time;
+    }
 
     @Override
     public boolean equals(Object o) {

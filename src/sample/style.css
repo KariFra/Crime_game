@@ -1,0 +1,13 @@
+.button{
+    -fx-background-color: black;
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+}
+.label{
+    -fx-text-fill: white;
+}
+
+.labelFinal{
+    -fx-text-fill: white;
+    -fx-font-size: 30px;
+}

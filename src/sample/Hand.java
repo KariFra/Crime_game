@@ -3,12 +3,12 @@ package sample;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
+
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
-import javafx.scene.layout.GridPane;
+
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -17,7 +17,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 
@@ -62,6 +61,7 @@ static Evidence opponentMurderCase;
                     if (chooseCard1.isSelected()) {
                         chosenCard = handDeck.get(0);
                         handDeck.remove(0);
+
                     }
                     if (chooseCard2.isSelected()) {
                         chosenCard = handDeck.get(1);
@@ -73,13 +73,9 @@ static Evidence opponentMurderCase;
                     }
                     handCards.close();
                 }
+
             }
         });
-
-
-
-
-        System.out.println(handDeck);
 
         card1.setFill(new ImagePattern(new Image("file:src/sample/assets/"+handDeck.get(0).getPicture()+".png")));
         card2.setFill(new ImagePattern(new Image("file:src/sample/assets/"+handDeck.get(1).getPicture()+".png")));
@@ -114,7 +110,6 @@ static Evidence opponentMurderCase;
     }
 
     public Evidence chooseTheMurderCase(){
-        caseFiles.pickPossibleCaseCards();
         murderCase = caseFiles.pickPossibleCaseCards().get(0);
         caseFiles.removeTheCaseFilesFromTheDeck(murderCase);
         return murderCase;
