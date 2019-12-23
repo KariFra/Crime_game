@@ -36,6 +36,9 @@ public class Guess {
         opponentCardsPossibilities.setMinWidth(350);
         opponentCardsPossibilities.initModality(Modality.APPLICATION_MODAL);
 
+
+        Button endWindow = new Button("Close the window");
+        endWindow.setOnAction(e ->opponentCardsPossibilities.close());
         Label newLabel = new Label("After ticking right buttons, close the window to check your answer!");
         Rectangle circleKnife = new Rectangle(70.00,70.00);
         circleKnife.setFill(new ImagePattern(knife));
@@ -104,6 +107,7 @@ public class Guess {
                     checkMan.setVisible(false);
                     checkDay.setVisible(true);
                     checkNight.setVisible(true);
+                    endWindow.setVisible(false);
                 }
             }
         });
@@ -200,8 +204,10 @@ public class Guess {
         HBox timeOptionTwo = new HBox();
         timeOptionTwo.getChildren().addAll(circleNight,checkNight);
         layoutTime.getChildren().addAll(timeOptionOne,timeOptionTwo);
+        VBox labelButton = new VBox();
+        labelButton.getChildren().addAll(newLabel,endWindow);
         HBox layout = new HBox();
-        layout.getChildren().addAll(layoutGender,layoutTime,layoutTool,layoutPlace,newLabel);
+        layout.getChildren().addAll(layoutGender,layoutTime,layoutTool,layoutPlace,labelButton);
 
         Scene scene = new Scene(layout,900, 150, Color.BLACK);
         opponentCardsPossibilities.setScene(scene);

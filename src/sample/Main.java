@@ -63,7 +63,7 @@ public class Main extends Application {
     Rectangle card10 = new Rectangle(260.00, 70.00);
     Rectangle card11 = new Rectangle(260.00, 70.00);
     Rectangle card12 = new Rectangle(260.00, 70.00);
-    Rectangle appearingAnswer = new Rectangle(0, 0, 0, 0);
+
     Circle circle1 = new Circle(40.00);
     Circle circle2 = new Circle(40.00);
     Circle circle3 = new Circle(40.00);
@@ -422,14 +422,16 @@ public class Main extends Application {
 
         guessButton.setOnAction((click) ->{
             opponentGuessedCard = guess.guessOpponentCard();
-            System.out.println("The card that I guessed "+opponentGuessedCard);
-            String opponentCard = opponentMurderCase.printOutGender()+" "+opponentMurderCase.printOutTime()+" "+opponentMurderCase.printOutTool()+" "+opponentMurderCase.printOutPlace();
-            System.out.println("The card that was murder case "+opponentCard);
-            if (opponentGuessedCard.equals(opponentCard)){
-//                main.answerPrint(grid,new Label("You were right Scherlock!"));
-                System.out.println("You were right Scherlock!");
-            } else{
-                System.out.println("Not even close...");
+            while (opponentGuessedCard != null) {
+                ;
+                System.out.println("The card that I guessed " + opponentGuessedCard);
+                String opponentCard = opponentMurderCase.printOutGender() + " " + opponentMurderCase.printOutTime() + " " + opponentMurderCase.printOutTool() + " " + opponentMurderCase.printOutPlace();
+                System.out.println("The card that was murder case " + opponentCard);
+                if (opponentGuessedCard.equals(opponentCard)) {
+                    System.out.println("You were right Scherlock!");
+                } else {
+                    System.out.println("Not even close...");
+                }
             }
         });
 
@@ -495,17 +497,6 @@ public class Main extends Application {
 
     }
 
-//    public void answerPrint(GridPane grid,Label label){
-//
-//        StackPane stackAnswer = new StackPane();
-//        stackAnswer.getChildren().addAll(grid,appearingAnswer);
-//        StackPane answer = new StackPane();
-//        answer.getChildren().addAll(appearingAnswer,label);
-//        ScaleTransition st = new ScaleTransition(Duration.millis(2000),appearingAnswer);
-//        st.setToX(1400);
-//        st.setToY(1000);
-//        st.play();
-//    }
     public String opponentGuess(Evidence murderCase){
         Random random = new Random();
         int numberPlace = random.nextInt(1);
