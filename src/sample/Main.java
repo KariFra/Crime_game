@@ -343,15 +343,17 @@ public class Main extends Application {
             if (clickCalculator<6){buttonCheckYourHand.setVisible(true);}
             if (clickCalculator==6){finalCardGuess =main.opponentGuess(murderCase);
                 if (finalCardGuess.equals(murderCase.printOutGender()+" "+murderCase.printOutTime()+" "+murderCase.printOutTool()+" "+murderCase.printOutPlace())){
-
+                    finalWindow.showWindow(new Label("You were too slow this time..."));
                     System.out.println("You were too slow this time...");
                 } else{
+                    finalWindow.showWindow(new Label("You still have chance to solve the case"));
                     System.out.println("You still have chance to solve the case");
                 }
             }
             if (card3.isVisible() && card6.isVisible() || card2.isVisible() && card3.isVisible()){
                 finalCardGuess =main.opponentGuess(murderCase);
                 if (finalCardGuess.equals(murderCase.printOutGender()+" "+murderCase.printOutTime()+" "+murderCase.printOutTool()+" "+murderCase.printOutPlace())){
+                    finalWindow.showWindow(new Label("You were too slow this time..."));
                     System.out.println("You were too slow this time...");
                 }
             }
@@ -430,7 +432,6 @@ public class Main extends Application {
                 System.out.println("The card that was murder case " + opponentCard);
                 if (opponentGuessedCard.equals(opponentCard)) {
                     finalWindow.showWindow(new Label("You were right Scherlock!"));
-                    window.close();
 //                    if (answer){
 //                        window.
 //                    }
