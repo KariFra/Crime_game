@@ -87,6 +87,7 @@ public class Main extends Application {
     CaseFiles caseFiles = new CaseFiles();
     Hand hand = new Hand(caseFiles);
     Guess guess = new Guess();
+    FinalWindow finalWindow = new FinalWindow();
 
 
     Stage window;
@@ -95,15 +96,16 @@ public class Main extends Application {
     Evidence murderCase;
     String opponentGuessedCard;
     String finalCardGuess;
-    int numberOfCommonEvidencesOpponent = 0;
-    int numberOfCommonEvidences = 0;
-    int oneOrZero = 0;
-    int two = 0;
-    int three = 0;
-    int oneOrZeroOpponent = 0;
-    int twoOpponent = 0;
-    int threeOpponent = 0;
+    int numberOfCommonEvidencesOpponent;
+    int numberOfCommonEvidences;
+    int oneOrZero;
+    int two;
+    int three;
+    int oneOrZeroOpponent;
+    int twoOpponent;
+    int threeOpponent;
     int clickCalculator;
+    boolean answer;
 
     public static void main(String[] args) {
         launch(args);
@@ -423,13 +425,18 @@ public class Main extends Application {
         guessButton.setOnAction((click) ->{
             opponentGuessedCard = guess.guessOpponentCard();
             while (opponentGuessedCard != null) {
-                ;
                 System.out.println("The card that I guessed " + opponentGuessedCard);
                 String opponentCard = opponentMurderCase.printOutGender() + " " + opponentMurderCase.printOutTime() + " " + opponentMurderCase.printOutTool() + " " + opponentMurderCase.printOutPlace();
                 System.out.println("The card that was murder case " + opponentCard);
                 if (opponentGuessedCard.equals(opponentCard)) {
+                    finalWindow.showWindow(new Label("You were right Scherlock!"));
+                    window.close();
+//                    if (answer){
+//                        window.
+//                    }
                     System.out.println("You were right Scherlock!");
                 } else {
+                    finalWindow.showWindow(new Label("Not even close..."));
                     System.out.println("Not even close...");
                 }
             }

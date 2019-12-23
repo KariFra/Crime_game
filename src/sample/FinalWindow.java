@@ -1,7 +1,9 @@
 package sample;
 
-import javafx.geometry.Pos;
+
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -11,9 +13,11 @@ import javafx.stage.Stage;
 
 public class FinalWindow {
 
-    Image picture = new Image("file:src/sample/assets/knife_end.png");
 
-    public void showWindowRight() {
+    Image picture = new Image("file:src/sample/assets/knife_end.jpg");
+    boolean answer;
+
+    public boolean showWindow(Label labelFinal) {
         Stage finalWindow = new Stage();
         finalWindow.setTitle("End");
         finalWindow.initModality(Modality.APPLICATION_MODAL);
@@ -22,23 +26,26 @@ public class FinalWindow {
         BackgroundImage backgroundImage = new BackgroundImage(picture, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
         Background background = new Background(backgroundImage);
 
-        Label labelFinal = new Label("kfakeugfkuegkuegfkuaegfkaegfkuga");
 
+        Button startNewGame = new Button("Try again!");
+        startNewGame.setOnAction(e -> {
+            answer = true;
+            finalWindow.close();
+        });
+        GridPane grid = new GridPane();
+        grid.setBackground(background);
+        GridPane.setConstraints(labelFinal,6,20);
+        GridPane.setConstraints(startNewGame,6,25);
+        grid.getChildren().addAll(labelFinal,startNewGame);
+        grid.setPadding(new Insets(10.00, 5.00, 10.00, 10.00));
+        grid.setVgap(8.00);
+        grid.setHgap(10.00);
 
-        AnchorPane anchorPane = new AnchorPane();
-        anchorPane.setBackground(background);
-        anchorPane.getChildren().addAll(labelFinal);
-        AnchorPane.setTopAnchor(labelFinal,10.00);
-        AnchorPane.setBottomAnchor(labelFinal,10.00);
-        AnchorPane.setLeftAnchor(labelFinal,10.00);
-        AnchorPane.setRightAnchor(labelFinal,10.00);
-
-        Scene scene = new Scene(anchorPane, 1400.00, 1000.00, Color.BLACK);
+        Scene scene = new Scene(grid, 1400.00, 1000.00, Color.BLACK);
         scene.getStylesheets().add("file:src/sample/style.css");
         finalWindow.setScene(scene);
         finalWindow.showAndWait();
 
-
-
+return answer;
     }
 }
