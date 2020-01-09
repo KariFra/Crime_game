@@ -447,10 +447,10 @@ public class Main extends Application {
 
     public String opponentGuess(Evidence murderCase){
         Random random = new Random();
-        int numberPlace = random.nextInt(1);
-        int numberTool = random.nextInt(1);
-        int numberGender = random.nextInt(1);
-        int numberTime = random.nextInt(1);
+        int numberPlace = random.nextInt(50);
+        int numberTool = random.nextInt(50);
+        int numberGender = random.nextInt(50);
+        int numberTime = random.nextInt(50);
         System.out.println(murderCase);
         System.out.println(numberPlace);
         System.out.println(numberTool);
@@ -464,42 +464,42 @@ public class Main extends Application {
             finalCardGuess = murderCase.printOutGender()+" "+murderCase.printOutTime()+" "+murderCase.printOutTool()+" "+murderCase.printOutPlace();
         }
         if(createdCards.get(2).isVisible()){
-            if(numberPlace == 0){
+            if(numberPlace%2 == 0){
                 place = "HOUSE";
             } else {place = "GARDEN";}
             finalCardGuess = murderCase.printOutGender()+" "+murderCase.printOutTime()+" "+murderCase.printOutTool()+" "+place;
         }
         if(createdCards.get(1).isVisible() && createdCards.get(4).isVisible()){
-            if(numberPlace == 0){
+            if(numberPlace%2 == 0){
                 place = "HOUSE";
             } else {place = "GARDEN";}
-            if(numberTool == 0){
+            if(numberTool%2 == 0){
                 tool = "GUN";
             } else {tool = "KNIFE";}
             finalCardGuess = murderCase.printOutGender()+" "+murderCase.printOutTime()+" "+tool+" "+place;
         }
         if(createdCards.get(1).isVisible()){
-            if(numberPlace == 0){
+            if(numberPlace%2 == 0){
                 place = "HOUSE";
             } else {place = "GARDEN";}
-            if(numberTool == 0){
+            if(numberTool%2 == 0){
                 tool = "GUN";
             } else {tool = "KNIFE";}
-            if(numberTime == 0){
+            if(numberTime%2 == 0){
                 time = "DAY";
             } else {time = "NIGHT";}
             finalCardGuess = murderCase.printOutGender()+" "+time+" "+tool+" "+place;
         } else {
-            if(numberPlace == 0){
+            if(numberPlace%2 == 0){
                 place = "HOUSE";
             } else {place = "GARDEN";}
-            if(numberTool == 0){
+            if(numberTool%2 == 0){
                 tool = "GUN";
             } else {tool = "KNIFE";}
-            if(numberTime == 0){
+            if(numberTime%2 == 0){
                 time = "DAY";
             } else {time = "NIGHT";}
-            if(numberGender == 0){
+            if(numberGender%2 == 0){
                 gender = "WOMAN";
             } else {gender = "MAN";}
             finalCardGuess = gender+" "+time+" "+tool+" "+place;
