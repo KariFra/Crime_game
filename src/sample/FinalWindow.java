@@ -1,6 +1,7 @@
 package sample;
 
 
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -15,9 +16,9 @@ public class FinalWindow {
 
 
     Image picture = new Image("file:src/sample/assets/knife_end.jpg");
-    boolean answer;
+    static boolean answer;
 
-    public boolean showWindow(Label labelFinal) {
+    public boolean showWindow(String labelFinal) {
         Stage finalWindow = new Stage();
         finalWindow.setTitle("End");
         finalWindow.initModality(Modality.APPLICATION_MODAL);
@@ -25,18 +26,30 @@ public class FinalWindow {
         BackgroundSize backgroundSize = new BackgroundSize(100.0D, 100.0D, true, true, true, true);
         BackgroundImage backgroundImage = new BackgroundImage(picture, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
         Background background = new Background(backgroundImage);
-
+        Label label = new Label();
+        label.setStyle("-fx-font: 50 arial;");
+        label.setText(labelFinal);
 
         Button startNewGame = new Button("Try again!");
+        Button closeTheGame = new Button("I am done...");
+
         startNewGame.setOnAction(e -> {
             answer = true;
             finalWindow.close();
         });
+
+        closeTheGame.setOnAction(e -> {
+            answer = false;
+            finalWindow.close();
+            Platform.exit();
+            System.exit(0);
+        });
         GridPane grid = new GridPane();
         grid.setBackground(background);
-        GridPane.setConstraints(labelFinal,6,20);
+        GridPane.setConstraints(label,6,20);
         GridPane.setConstraints(startNewGame,6,25);
-        grid.getChildren().addAll(labelFinal,startNewGame);
+        GridPane.setConstraints(closeTheGame,6,30);
+        grid.getChildren().addAll(label,startNewGame,closeTheGame);
         grid.setPadding(new Insets(10.00, 5.00, 10.00, 10.00));
         grid.setVgap(8.00);
         grid.setHgap(10.00);
@@ -46,6 +59,6 @@ public class FinalWindow {
         finalWindow.setScene(scene);
         finalWindow.showAndWait();
 
-return answer;
+        return answer;
     }
 }

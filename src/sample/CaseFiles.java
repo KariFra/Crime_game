@@ -86,16 +86,12 @@ Evidence WKHN = new Evidence("WOMAN","KNIFE", "HOUSE", "NIGHT","WKHN");
         return newDeck;
     }
 
-    public ArrayList<Evidence> removeTheCardFromTheDeck(Evidence newCard){
-        int number = newDeck.indexOf(newCard);
-        newDeck.remove(number);
-        return newDeck;
+    public void removeTheCardFromTheDeck(Evidence newCard){
+        newDeck.remove(newDeck.indexOf(newCard));
     }
 
-    public ArrayList<Evidence> removeTheCaseFilesFromTheDeck(Evidence murderCase){
-        int number = newDeck.indexOf(murderCase);
-        newDeck.remove(number);
-        return newDeck;
+    public void removeTheCaseFilesFromTheDeck(Evidence murderCase){
+        newDeck.remove(newDeck.indexOf(murderCase));
     }
 
     public Evidence pickTheCardFromTheDeck() {
@@ -105,10 +101,10 @@ Evidence WKHN = new Evidence("WOMAN","KNIFE", "HOUSE", "NIGHT","WKHN");
 
     public ArrayList<Evidence> pickPossibleCaseCards() {
         newCaseFileCards = newDeck.stream()
-                .filter(e -> e.getGender() != "UNKNOWN")
-                .filter(e -> e.getTool() != "UNKNOWN")
-                .filter(e -> e.getTime() != "UNKNOWN")
-                .filter(e -> e.getPlace() != "UNKNOWN")
+                .filter(e -> !e.getGender().equals("UNKNOWN"))
+                .filter(e -> !e.getTool().equals("UNKNOWN"))
+                .filter(e -> !e.getTime().equals("UNKNOWN"))
+                .filter(e -> !e.getPlace().equals("UNKNOWN"))
                 .collect(Collectors.toCollection(ArrayList::new));
         return newCaseFileCards;
     }

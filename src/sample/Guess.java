@@ -2,9 +2,12 @@ package sample;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -13,12 +16,19 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class Guess {
+    static String guessedCardGender;
+    static String guessedCardTool;
+    static String guessedCardPlace;
+    static String guessedCardTime;
     static String guessedCard;
 
-
+    ArrayList< RadioButton> checkButtonList = new ArrayList<>();
+    ArrayList< Rectangle> optionsList = new ArrayList<>();
 
     Image man = new Image("file:src/sample/assets/MAN.png");
     Image woman = new Image("file:src/sample/assets/WOMAN.png");
@@ -29,63 +39,56 @@ public class Guess {
     Image day = new Image("file:src/sample/assets/DAY.png");
     Image night = new Image("file:src/sample/assets/NIGHT.png");
 
-
     public String guessOpponentCard(){
         Stage opponentCardsPossibilities = new Stage();
         opponentCardsPossibilities.setTitle("Solve the case");
         opponentCardsPossibilities.setMinWidth(350);
         opponentCardsPossibilities.initModality(Modality.APPLICATION_MODAL);
 
-
         Button endWindow = new Button("Close the window");
+        endWindow.setStyle("-fx-background-color: white;-fx-font-size: 24 arial;-fx-text-fill: black;");
         endWindow.setOnAction(e ->opponentCardsPossibilities.close());
         Label newLabel = new Label("After ticking right buttons, close the window to check your answer!");
-        Rectangle circleKnife = new Rectangle(70.00,70.00);
-        circleKnife.setFill(new ImagePattern(knife));
-        Rectangle circleGun = new Rectangle(70.00,70.00);
-        circleGun.setFill(new ImagePattern(gun));
-        Rectangle circleWoman = new Rectangle(70.00,70.00);
-        circleWoman.setFill(new ImagePattern(woman));
-        Rectangle circleMan = new Rectangle(70.00,70.00);
-        circleMan.setFill(new ImagePattern(man));
-        Rectangle circleDay = new Rectangle(70.00,70.00);
-        circleDay.setFill(new ImagePattern(day));
-        Rectangle circleNight = new Rectangle(70.00,70.00);
-        circleNight.setFill(new ImagePattern(night));
-        Rectangle circleGarden = new Rectangle(70.00,70.00);
-        circleGarden.setFill(new ImagePattern(garden));
-        Rectangle circleHouse = new Rectangle(70.00,70.00);
-        circleHouse.setFill(new ImagePattern(house));
+        newLabel.setStyle("-fx-font: 24 arial;-fx-text-fill: white;");
 
-        RadioButton checkKnife = new RadioButton();
-        RadioButton checkGun = new RadioButton();
-        RadioButton checkWoman = new RadioButton();
-        RadioButton checkMan = new RadioButton();
-        RadioButton checkDay = new RadioButton();
-        RadioButton checkNight = new RadioButton();
-        RadioButton checkGarden = new RadioButton();
-        RadioButton checkHouse = new RadioButton();
+        ArrayList <Image> pictures = new ArrayList<>();
+        pictures.add(0,knife);
+        pictures.add(1,gun);
+        pictures.add(2,woman);
+        pictures.add(3,man);
+        pictures.add(4,house);
+        pictures.add(5,garden);
+        pictures.add(6,day);
+        pictures.add(7,night);
 
         ToggleGroup groupTool = new ToggleGroup();
-        checkKnife.setToggleGroup(groupTool);
-        checkGun.setToggleGroup(groupTool);
         ToggleGroup groupGender = new ToggleGroup();
-        checkWoman.setToggleGroup(groupGender);
-        checkMan.setToggleGroup(groupGender);
-        ToggleGroup groupTime = new ToggleGroup();
-        checkDay.setToggleGroup(groupTime);
-        checkNight.setToggleGroup(groupTime);
         ToggleGroup groupPlace = new ToggleGroup();
-        checkGarden.setToggleGroup(groupPlace);
-        checkHouse.setToggleGroup(groupPlace);
-        checkWoman.setVisible(true);
-        checkMan.setVisible(true);
-        checkDay.setVisible(false);
-        checkNight.setVisible(false);
-        checkGarden.setVisible(false);
-        checkHouse.setVisible(false);
-        checkGun.setVisible(false);
-        checkKnife.setVisible(false);
+        ToggleGroup groupTime = new ToggleGroup();
+
+        int number=0;
+
+        for (int i =0; i<8;i++){
+            Rectangle option = new Rectangle(70.00,70.00);
+            option.setFill(new ImagePattern(pictures.get(i)));
+            optionsList.add(option);
+            RadioButton checkButton = new RadioButton();
+            if(number == 0 || number == 1) {
+                checkButton.setToggleGroup(groupTool);
+            }
+            else if (number == 2 || number == 3){
+                checkButton.setToggleGroup(groupGender);
+            }
+            else if (number == 4 || number == 5){
+                checkButton.setToggleGroup(groupPlace);
+            }
+            else if (number == 6 || number == 7){
+                checkButton.setToggleGroup(groupTime);
+
+            }
+            checkButtonList.add(checkButton);
+            number++;
+        }
 
         groupGender.selectedToggleProperty().addListener(new ChangeListener<Toggle>()
         {
@@ -95,19 +98,14 @@ public class Guess {
                 RadioButton rb = (RadioButton)groupGender.getSelectedToggle();
 
                 if (rb != null) {
-                    if (checkWoman.isSelected()) {
-                        guessedCard="WOMAN";
-                        circleMan.setVisible(false);
+                    if (checkButtonList.get(2).isSelected()) {
+                        guessedCardGender="WOMAN";
                     }
-                    if (checkMan.isSelected()) {
-                        guessedCard="MAN";
-                        circleWoman.setVisible(false);
+                    if (checkButtonList.get(3).isSelected()) {
+                        guessedCardGender="MAN";
+
                     }
-                    checkWoman.setVisible(false);
-                    checkMan.setVisible(false);
-                    checkDay.setVisible(true);
-                    checkNight.setVisible(true);
-                    endWindow.setVisible(false);
+                    guessedCard = guessedCardGender+ " " +guessedCardTime+ " " +guessedCardTool+ " " +guessedCardPlace;
                 }
             }
         });
@@ -119,19 +117,15 @@ public class Guess {
                 RadioButton rb = (RadioButton)groupTime.getSelectedToggle();
 
                 if (rb != null) {
-                    if (checkDay.isSelected()) {
-                        guessedCard=guessedCard+" "+"DAY";
-                        circleNight.setVisible(false);
+                    if (checkButtonList.get(6).isSelected()) {
+                        guessedCardTime="DAY";
                     }
-                    if (checkNight.isSelected()) {
-                        guessedCard=guessedCard+" "+"NIGHT";
-                        circleDay.setVisible(false);
+                    if (checkButtonList.get(7).isSelected()) {
+                        guessedCardTime="NIGHT";
                     }
-                    checkDay.setVisible(false);
-                    checkNight.setVisible(false);
-                    checkGun.setVisible(true);
-                    checkKnife.setVisible(true);
+                    guessedCard = guessedCardGender+ " " +guessedCardTime+ " " +guessedCardTool+ " " +guessedCardPlace;
                 }
+
             }
         });
         groupTool.selectedToggleProperty().addListener(new ChangeListener<Toggle>()
@@ -142,18 +136,13 @@ public class Guess {
                 RadioButton rb = (RadioButton)groupTool.getSelectedToggle();
 
                 if (rb != null) {
-                    if (checkKnife.isSelected()) {
-                        guessedCard=guessedCard+" "+"KNIFE";
-                        circleGun.setVisible(false);
+                    if (checkButtonList.get(0).isSelected()) {
+                        guessedCardTool="KNIFE";
                     }
-                    if (checkGun.isSelected()) {
-                        guessedCard=guessedCard+" "+"GUN";
-                        circleKnife.setVisible(false);
+                    if (checkButtonList.get(1).isSelected()) {
+                        guessedCardTool="GUN";
                     }
-                    checkKnife.setVisible(false);
-                    checkGun.setVisible(false);
-                    checkHouse.setVisible(true);
-                    checkGarden.setVisible(true);
+                    guessedCard = guessedCardGender+ " " +guessedCardTime+ " " +guessedCardTool+ " " +guessedCardPlace;
                 }
             }
         });
@@ -165,51 +154,23 @@ public class Guess {
                 RadioButton rb = (RadioButton)groupPlace.getSelectedToggle();
 
                 if (rb != null) {
-                    if (checkGarden.isSelected()) {
-                        guessedCard=guessedCard+" "+"GARDEN";
-                        circleHouse.setVisible(false);
+                    if (checkButtonList.get(5).isSelected()) {
+                        guessedCardPlace="GARDEN";
                     }
-                    if (checkHouse.isSelected()) {
-                        guessedCard=guessedCard+" "+"HOUSE";
-                        circleGarden.setVisible(false);
+                    if (checkButtonList.get(4).isSelected()) {
+                        guessedCardPlace="HOUSE";
                     }
-                    checkGarden.setVisible(false);
-                    checkHouse.setVisible(false);
+                    guessedCard = guessedCardGender+ " " +guessedCardTime+ " " +guessedCardTool+ " " +guessedCardPlace;
                 }
             }
         });
 
-        System.out.println("My guessed card is: "+guessedCard);
-        VBox layoutTool = new VBox();
-        HBox toolOptionOne = new HBox();
-        toolOptionOne.getChildren().addAll(circleKnife,checkKnife);
-        HBox toolOptionTwo = new HBox();
-        toolOptionTwo.getChildren().addAll(circleGun,checkGun);
-        layoutTool.getChildren().addAll(toolOptionOne,toolOptionTwo);
-        VBox layoutGender = new VBox();
-        HBox genderOptionOne = new HBox();
-        genderOptionOne.getChildren().addAll(circleWoman,checkWoman);
-        HBox genderOptionTwo = new HBox();
-        genderOptionTwo.getChildren().addAll(circleMan,checkMan);
-        layoutGender.getChildren().addAll(genderOptionOne,genderOptionTwo);
-        VBox layoutPlace = new VBox();
-        HBox placeOptionOne = new HBox();
-        placeOptionOne.getChildren().addAll(circleHouse,checkHouse);
-        HBox placeOptionTwo = new HBox();
-        placeOptionTwo.getChildren().addAll(circleGarden,checkGarden);
-        layoutPlace.getChildren().addAll(placeOptionOne,placeOptionTwo);
-        VBox layoutTime = new VBox();
-        HBox timeOptionOne = new HBox();
-        timeOptionOne.getChildren().addAll(circleDay,checkDay);
-        HBox timeOptionTwo = new HBox();
-        timeOptionTwo.getChildren().addAll(circleNight,checkNight);
-        layoutTime.getChildren().addAll(timeOptionOne,timeOptionTwo);
-        VBox labelButton = new VBox();
-        labelButton.getChildren().addAll(newLabel,endWindow);
-        HBox layout = new HBox();
-        layout.getChildren().addAll(layoutGender,layoutTime,layoutTool,layoutPlace,labelButton);
+        FlowPane flow = new FlowPane(20.0, 20.0,optionsList.get(2),checkButtonList.get(2),optionsList.get(0),checkButtonList.get(0),optionsList.get(4),checkButtonList.get(4),optionsList.get(6),checkButtonList.get(6),newLabel,endWindow,optionsList.get(3),checkButtonList.get(3),optionsList.get(1),checkButtonList.get(1),optionsList.get(5),checkButtonList.get(5),optionsList.get(7),checkButtonList.get(7));
+        flow.setPadding(new Insets(10));
+        flow.setStyle("-fx-background-color: black");
 
-        Scene scene = new Scene(layout,900, 150, Color.BLACK);
+
+        Scene scene = new Scene(flow,1000, 250, Color.BLACK);
         opponentCardsPossibilities.setScene(scene);
         opponentCardsPossibilities.showAndWait();
 

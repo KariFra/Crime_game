@@ -1,13 +1,13 @@
 .button{
     -fx-background-color: black;
-    -fx-font-size: 20px;
+    -fx-font-size: 24 arial;
     -fx-text-fill: white;
 }
 .label{
     -fx-text-fill: white;
+    -fx-font-size: 24 arial;
 }
 
 .labelFinal{
     -fx-text-fill: white;
-    -fx-font-size: 120px;
 }
