@@ -122,7 +122,7 @@ public class Main extends Application {
         //Creating the circles
         int rowIndexDifference = 3;
         for (int i = 0; i<4; i++){
-            Circle circle = new Circle(40.00);
+            Circle circle = new Circle(49.00);
             circle.setVisible(false);
             GridPane.setConstraints(circle, 7, i+rowIndexDifference);
             grid.getChildren().add(circle);

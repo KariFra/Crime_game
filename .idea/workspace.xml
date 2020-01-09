@@ -3,65 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/GARDEN.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/GARDEN.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/GG.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/GG.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/GGN.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/GGN.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/HD.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/HD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/HOUSE.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/HOUSE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/KHD.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/KHD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/MGD.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/MGD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/MGG.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/MGG.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/MGGD.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/MGGD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/MGGN.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/MGGN.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/MGHD.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/MGHD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/MGHN.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/MGHN.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/MKGD.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/MKGD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/MKGN.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/MKGN.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/MKHD.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/MKHD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/MKHN.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/MKN.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/MKN.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/MN.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/MN.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/WGD.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/WGD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/WGGD.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/WGGD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/WGGN.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/WGGN.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/WGH.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/WGH.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/WGHD.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/WGHD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/WGHN.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/WGHN.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/WK.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/WK.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/WKGD.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/WKGD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/WKGN.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/WKGN.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/WKHD.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/WKHD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/WKHN.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/assets/WKHN.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/FinalWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/FinalWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Crime_game/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Crime_game/sample/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/FinalWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/FinalWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/GARDEN.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/GARDEN.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/GG.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/GG.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/GGN.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/GGN.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/HD.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/HD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/HOUSE.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/HOUSE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/KHD.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/KHD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/MGD.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/MGD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/MGG.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/MGG.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/MGGD.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/MGGD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/MGGN.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/MGGN.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/MGHD.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/MGHD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/MGHN.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/MGHN.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/MKGD.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/MKGD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/MKGN.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/MKGN.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/MKHD.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/MKHD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/MKHN.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/MKN.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/MKN.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/MN.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/MN.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/WGD.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/WGD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/WGGD.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/WGGD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/WGGN.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/WGGN.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/WGH.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/WGH.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/WGHD.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/WGHD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/WGHN.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/WGHN.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/WK.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/WK.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/WKGD.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/WKGD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/WKGN.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/WKGN.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/WKHD.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/WKHD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/assets/WKHN.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/assets/WKHN.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -321,7 +266,7 @@
       <workItem from="1578248758441" duration="9370000" />
       <workItem from="1578296990304" duration="5475000" />
       <workItem from="1578488385048" duration="14523000" />
-      <workItem from="1578572330777" duration="9862000" />
+      <workItem from="1578572330777" duration="10931000" />
     </task>
     <servers />
   </component>
@@ -349,22 +294,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="548" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1577031809150" />
-    <state width="1493" height="120" key="GridCell.Tab.0.bottom" timestamp="1578583820398">
+    <state width="1493" height="120" key="GridCell.Tab.0.bottom" timestamp="1578584894650">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="120" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1578583820398" />
-    <state width="1493" height="120" key="GridCell.Tab.0.center" timestamp="1578583820397">
+    <state width="1493" height="120" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1578584894650" />
+    <state width="1493" height="120" key="GridCell.Tab.0.center" timestamp="1578584894650">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="120" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1578583820397" />
-    <state width="1493" height="120" key="GridCell.Tab.0.left" timestamp="1578583820396">
+    <state width="1493" height="120" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1578584894650" />
+    <state width="1493" height="120" key="GridCell.Tab.0.left" timestamp="1578584894649">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="120" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1578583820396" />
-    <state width="1493" height="120" key="GridCell.Tab.0.right" timestamp="1578583820398">
+    <state width="1493" height="120" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1578584894649" />
+    <state width="1493" height="120" key="GridCell.Tab.0.right" timestamp="1578584894650">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="120" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1578583820398" />
+    <state width="1493" height="120" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1578584894650" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1578514378051">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

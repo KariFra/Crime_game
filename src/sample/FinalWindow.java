@@ -30,7 +30,7 @@ public class FinalWindow {
         label.setText(labelFinal);
 
         Button startNewGame = new Button("Try again!");
-        Button closeTheGame = new Button("I am done...");
+        Button closeTheGame = new Button("I am done.");
 
         startNewGame.setOnAction(e -> {
             finalWindow.close();
