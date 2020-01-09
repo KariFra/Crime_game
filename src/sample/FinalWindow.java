@@ -16,9 +16,8 @@ public class FinalWindow {
 
 
     Image picture = new Image("file:src/sample/assets/knife_end.jpg");
-    static boolean answer;
 
-    public boolean showWindow(String labelFinal) {
+    public void showWindow(String labelFinal) {
         Stage finalWindow = new Stage();
         finalWindow.setTitle("End");
         finalWindow.initModality(Modality.APPLICATION_MODAL);
@@ -34,12 +33,10 @@ public class FinalWindow {
         Button closeTheGame = new Button("I am done...");
 
         startNewGame.setOnAction(e -> {
-            answer = true;
             finalWindow.close();
         });
 
         closeTheGame.setOnAction(e -> {
-            answer = false;
             finalWindow.close();
             Platform.exit();
             System.exit(0);
@@ -58,7 +55,5 @@ public class FinalWindow {
         scene.getStylesheets().add("file:src/sample/style.css");
         finalWindow.setScene(scene);
         finalWindow.showAndWait();
-
-        return answer;
     }
 }

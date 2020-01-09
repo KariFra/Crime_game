@@ -24,6 +24,8 @@ import static sample.Hand.chosenCard;
 
 public class Main extends Application {
 
+    ArrayList< Rectangle> createdCards = new ArrayList<>();
+    ArrayList< Circle> createdCircles = new ArrayList<>();
 
 //    import graphics
 
@@ -38,11 +40,7 @@ public class Main extends Application {
     Image day = new Image("file:src/sample/assets/DAY.png");
     Image night = new Image("file:src/sample/assets/NIGHT.png");
 
-
 //creating elements of the scene
-
-    ArrayList< Rectangle> createdCards = new ArrayList<>();
-    ArrayList< Circle> createdCircles = new ArrayList<>();
 
     Button buttonStart = new Button("Get the Case");
     Button buttonCompare = new Button("Compare   ");
@@ -50,8 +48,7 @@ public class Main extends Application {
     Button finishRound = new Button("Finish round");
     Button guessButton = new Button("Guess");
 
-    Rectangle caseCard = new Rectangle(260.00, 70.00);
-    Rectangle opponentCaseCard = new Rectangle(260.00, 70.00);
+// creating objects
 
     CaseFiles caseFiles = new CaseFiles();
     Hand hand = new Hand(caseFiles);
@@ -74,7 +71,9 @@ public class Main extends Application {
     int twoOpponent;
     int threeOpponent;
     int clickCalculator;
-    boolean answer;
+
+    Rectangle caseCard = new Rectangle(260.00, 70.00);
+    Rectangle opponentCaseCard = new Rectangle(260.00, 70.00);
 
     public static void main(String[] args) {
         launch(args);
@@ -95,7 +94,7 @@ public class Main extends Application {
         grid.setVgap(8.00);
         grid.setHgap(10.00);
 
-        //Creating the cards and circles
+        //Creating the cards
         int numberOfColumn = 0;
         int numberOfRow = 11;
         for (int i = 0; i<24; i++) {
@@ -119,6 +118,8 @@ public class Main extends Application {
             grid.getChildren().add(card);
         }
 
+
+        //Creating the circles
         int rowIndexDifference = 3;
         for (int i = 0; i<4; i++){
             Circle circle = new Circle(40.00);
@@ -278,21 +279,18 @@ public class Main extends Application {
         finishRound.setOnAction((click) ->{
             guessButton.setVisible(true);
             numberOfCommonEvidences = 0;
-            if (clickCalculator<6){buttonCheckYourHand.setVisible(true);}
-            if (clickCalculator==6){finalCardGuess =main.opponentGuess(murderCase);
+            if (clickCalculator<5){buttonCheckYourHand.setVisible(true);}
+            if (clickCalculator==5){finalCardGuess =main.opponentGuess(murderCase);
                 if (finalCardGuess.equals(murderCase.printOutGender()+" "+murderCase.printOutTime()+" "+murderCase.printOutTool()+" "+murderCase.printOutPlace())){
-                    answer = finalWindow.showWindow("You were too slow this time...");
-                    System.out.println("You were too slow this time...");
+                  finalWindow.showWindow("You were too slow this time...");
                 } else{
-                    answer = finalWindow.showWindow("You still have chance to solve the case");
-                    System.out.println("You still have chance to solve the case");
+                    finalWindow.showWindow("You still have chance to solve the case");
                 }
             }
             if (createdCards.get(3).isVisible() && createdCards.get(6).isVisible() || createdCards.get(2).isVisible() && createdCards.get(3).isVisible()){
                 finalCardGuess =main.opponentGuess(murderCase);
                 if (finalCardGuess.equals(murderCase.printOutGender()+" "+murderCase.printOutTime()+" "+murderCase.printOutTool()+" "+murderCase.printOutPlace())){
-                    answer = finalWindow.showWindow("You were too slow this time...");
-                    System.out.println("You were too slow this time...");
+                    finalWindow.showWindow("You were too slow this time...");
                 }
             }
             finishRound.setVisible(false);
@@ -366,7 +364,7 @@ public class Main extends Application {
             while (opponentGuessedCard != null && gameEnd == false) {
                 String opponentCard = opponentMurderCase.printOutGender() + " " + opponentMurderCase.printOutTime() + " " + opponentMurderCase.printOutTool() + " " + opponentMurderCase.printOutPlace();
                 if (opponentGuessedCard.equals(opponentCard)) {
-                    answer = finalWindow.showWindow("You were right Scherlock!");
+                    finalWindow.showWindow("You were right Scherlock!");
                     gameEnd = true;
                 } else {
                     finalWindow.showWindow("Not even close...");
@@ -454,6 +452,10 @@ public class Main extends Application {
         int numberGender = random.nextInt(1);
         int numberTime = random.nextInt(1);
         System.out.println(murderCase);
+        System.out.println(numberPlace);
+        System.out.println(numberTool);
+        System.out.println(numberGender);
+        System.out.println(numberTime);
         String place;
         String tool;
         String gender;
@@ -503,6 +505,17 @@ public class Main extends Application {
             finalCardGuess = gender+" "+time+" "+tool+" "+place;
         }
        return finalCardGuess;
+    }
+
+    public void restartTheGame(){
+        for (int i = 0; i<createdCards.size(); i++){
+            createdCards.get(i).setVisible(false);
+        }
+        buttonStart.setVisible(true);
+        guessButton.setVisible(false);
+        finishRound.setVisible(false);
+        caseCard.setVisible(false);
+        opponentCaseCard.setVisible(false);
     }
 
 }
