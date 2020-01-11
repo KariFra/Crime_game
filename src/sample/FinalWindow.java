@@ -39,7 +39,7 @@ public class FinalWindow {
         closeTheGame.setOnAction(e -> {
             finalWindow.close();
             Platform.exit();
-            System.exit(0);
+
         });
         GridPane grid = new GridPane();
         grid.setBackground(background);
