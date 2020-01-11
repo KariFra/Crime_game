@@ -285,7 +285,7 @@ public class Main extends Application {
                 if (finalCardGuess.equals(murderCase.printOutGender()+" "+murderCase.printOutTime()+" "+murderCase.printOutTool()+" "+murderCase.printOutPlace())){
                   finalWindow.showWindow("You were too slow this time...");
                 } else{
-                    finalWindow.showWindow("You still have chance to solve the case");
+                    finalWindow.showWindow("Murders will remain mistery");
                 }
             }
             if (createdCards.get(3).isVisible() && createdCards.get(6).isVisible() || createdCards.get(2).isVisible() && createdCards.get(3).isVisible()){
@@ -371,14 +371,7 @@ public class Main extends Application {
                     finalWindow.showWindow("Not even close...");
                     gameEnd = true;
                 }
-                for (int i = 0; i<createdCards.size(); i++){
-                    createdCards.get(i).setVisible(false);
-                }
-                buttonStart.setVisible(true);
-                guessButton.setVisible(false);
-                finishRound.setVisible(false);
-                caseCard.setVisible(false);
-                opponentCaseCard.setVisible(false);
+                restartTheGame();
             }
         });
 
@@ -452,11 +445,6 @@ public class Main extends Application {
         int numberTool = random.nextInt(50);
         int numberGender = random.nextInt(50);
         int numberTime = random.nextInt(50);
-        System.out.println(murderCase);
-        System.out.println(numberPlace);
-        System.out.println(numberTool);
-        System.out.println(numberGender);
-        System.out.println(numberTime);
         String place;
         String tool;
         String gender;
