@@ -284,14 +284,17 @@ public class Main extends Application {
             if (clickCalculator==5){finalCardGuess =opponentGuess(murderCase);
                 if (finalCardGuess.equals(murderCase.printOutGender()+" "+murderCase.printOutTime()+" "+murderCase.printOutTool()+" "+murderCase.printOutPlace())){
                   finalWindow.showWindow("You were too slow this time...");
+                    restartTheGame();
                 } else{
                     finalWindow.showWindow("Murders will remain mistery");
+
                 }
             }
             if (createdCards.get(3).isVisible() && createdCards.get(6).isVisible() || createdCards.get(2).isVisible() && createdCards.get(3).isVisible()){
                 finalCardGuess =opponentGuess(murderCase);
                 if (finalCardGuess.equals(murderCase.printOutGender()+" "+murderCase.printOutTime()+" "+murderCase.printOutTool()+" "+murderCase.printOutPlace())){
                     finalWindow.showWindow("You were too slow this time...");
+                    restartTheGame();
                 }
             }
             finishRound.setVisible(false);
