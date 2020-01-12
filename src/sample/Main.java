@@ -226,51 +226,51 @@ public class Main extends Application {
         System.out.println(numberOfCommonEvidencesOpponent);
 
             if (numberOfCommonEvidencesOpponent<=1 && oneOrZeroOpponent==1){
-                createdCards.get(21).setFill(new ImagePattern(new Image("file:src/sample/assets/"+ chosenCard.getPicture()+".png")));
+                createdCards.get(21).setFill(fillCard(chosenCard));
                 createdCards.get(21).setVisible(true);
             }
             if (numberOfCommonEvidencesOpponent<=1 && oneOrZeroOpponent==2){
-                createdCards.get(18).setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                createdCards.get(18).setFill(fillCard(chosenCard));
                 createdCards.get(18).setVisible(true);
             }
             if (numberOfCommonEvidencesOpponent<=1 && oneOrZeroOpponent==3){
-                createdCards.get(15).setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                createdCards.get(15).setFill(fillCard(chosenCard));
                 createdCards.get(15).setVisible(true);
             }
             if (numberOfCommonEvidencesOpponent<=1 && oneOrZeroOpponent==4){
-                createdCards.get(12).setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                createdCards.get(12).setFill(fillCard(chosenCard));
                 createdCards.get(12).setVisible(true);
             }
             if (numberOfCommonEvidencesOpponent==2 && twoOpponent==1){
-                createdCards.get(22).setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                createdCards.get(22).setFill(fillCard(chosenCard));
                 createdCards.get(22).setVisible(true);
             }
             if (numberOfCommonEvidencesOpponent==2 && twoOpponent==2){
-                createdCards.get(19).setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                createdCards.get(19).setFill(fillCard(chosenCard));
                 createdCards.get(19).setVisible(true);
             }
             if (numberOfCommonEvidencesOpponent==2 && twoOpponent==3){
-                createdCards.get(16).setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                createdCards.get(16).setFill(fillCard(chosenCard));
                 createdCards.get(16).setVisible(true);
             }
             if (numberOfCommonEvidencesOpponent==2 && twoOpponent==4){
-                createdCards.get(13).setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                createdCards.get(13).setFill(fillCard(chosenCard));
                 createdCards.get(13).setVisible(true);
             }
             if (numberOfCommonEvidencesOpponent==3 && threeOpponent==1){
-                createdCards.get(23).setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                createdCards.get(23).setFill(fillCard(chosenCard));
                 createdCards.get(23).setVisible(true);
             }
             if (numberOfCommonEvidences==3 && threeOpponent==2){
-                createdCards.get(20).setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                createdCards.get(20).setFill(fillCard(chosenCard));
                 createdCards.get(20).setVisible(true);
             }
             if (numberOfCommonEvidencesOpponent==3 && threeOpponent==3){
-                createdCards.get(17).setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                createdCards.get(17).setFill(fillCard(chosenCard));
                 createdCards.get(17).setVisible(true);
             }
             if (numberOfCommonEvidencesOpponent==3 && threeOpponent==4){
-                createdCards.get(14).setFill(new ImagePattern(new Image("file:src/sample/assets/"+chosenCard.getPicture()+".png")));
+                createdCards.get(14).setFill(fillCard(chosenCard));
                 createdCards.get(14).setVisible(true);
             }
 
@@ -312,51 +312,51 @@ public class Main extends Application {
                 three++;
             }
             if (numberOfCommonEvidences<=1 && oneOrZero==1){
-                createdCards.get(0).setFill(new ImagePattern(new Image("file:src/sample/assets/"+ opponentChosenCard.getPicture()+".png")));
+                createdCards.get(0).setFill(fillCard(opponentChosenCard));
                 createdCards.get(0).setVisible(true);
             }
             if (numberOfCommonEvidences<=1 && oneOrZero==2){
-                createdCards.get(3).setFill(new ImagePattern(new Image("file:src/sample/assets/"+opponentChosenCard.getPicture()+".png")));
+                createdCards.get(3).setFill(fillCard(opponentChosenCard));
                 createdCards.get(3).setVisible(true);
             }
             if (numberOfCommonEvidences<=1 && oneOrZero==3){
-                createdCards.get(6).setFill(new ImagePattern(new Image("file:src/sample/assets/"+opponentChosenCard.getPicture()+".png")));
+                createdCards.get(6).setFill(fillCard(opponentChosenCard));
                 createdCards.get(6).setVisible(true);
             }
             if (numberOfCommonEvidences<=1 && oneOrZero==4){
-                createdCards.get(9).setFill(new ImagePattern(new Image("file:src/sample/assets/"+opponentChosenCard.getPicture()+".png")));
+                createdCards.get(9).setFill(fillCard(opponentChosenCard));
                 createdCards.get(9).setVisible(true);
             }
             if (numberOfCommonEvidences==2 && two==1){
-                createdCards.get(1).setFill(new ImagePattern(new Image("file:src/sample/assets/"+opponentChosenCard.getPicture()+".png")));
+                createdCards.get(1).setFill(fillCard(opponentChosenCard));
                 createdCards.get(1).setVisible(true);
             }
             if (numberOfCommonEvidences==2 && two==2){
-                createdCards.get(4).setFill(new ImagePattern(new Image("file:src/sample/assets/"+opponentChosenCard.getPicture()+".png")));
+                createdCards.get(4).setFill(fillCard(opponentChosenCard));
                 createdCards.get(4).setVisible(true);
             }
             if (numberOfCommonEvidences==2 && two==3){
-                createdCards.get(7).setFill(new ImagePattern(new Image("file:src/sample/assets/"+opponentChosenCard.getPicture()+".png")));
+                createdCards.get(7).setFill(fillCard(opponentChosenCard));
                 createdCards.get(7).setVisible(true);
             }
             if (numberOfCommonEvidences==2 && two==4){
-                createdCards.get(10).setFill(new ImagePattern(new Image("file:src/sample/assets/"+opponentChosenCard.getPicture()+".png")));
+                createdCards.get(10).setFill(fillCard(opponentChosenCard));
                 createdCards.get(10).setVisible(true);
             }
             if (numberOfCommonEvidences==3 && three==1){
-                createdCards.get(2).setFill(new ImagePattern(new Image("file:src/sample/assets/"+opponentChosenCard.getPicture()+".png")));
+                createdCards.get(2).setFill(fillCard(opponentChosenCard));
                 createdCards.get(2).setVisible(true);
             }
             if (numberOfCommonEvidences==3 && three==2){
-                createdCards.get(5).setFill(new ImagePattern(new Image("file:src/sample/assets/"+opponentChosenCard.getPicture()+".png")));
+                createdCards.get(5).setFill(fillCard(opponentChosenCard));
                 createdCards.get(5).setVisible(true);
             }
             if (numberOfCommonEvidences==3 && three==3){
-                createdCards.get(8).setFill(new ImagePattern(new Image("file:src/sample/assets/"+opponentChosenCard.getPicture()+".png")));
+                createdCards.get(8).setFill(fillCard(opponentChosenCard));
                 createdCards.get(8).setVisible(true);
             }
             if (numberOfCommonEvidences==3 && three==4){
-                createdCards.get(11).setFill(new ImagePattern(new Image("file:src/sample/assets/"+opponentChosenCard.getPicture()+".png")));
+                createdCards.get(11).setFill(fillCard(opponentChosenCard));
                 createdCards.get(11).setVisible(true);
             }
             numberOfCommonEvidences = 0;
@@ -383,6 +383,11 @@ public class Main extends Application {
         window.setTitle("Crime Game");
         window.setScene(scene);
         window.show();
+    }
+
+    public ImagePattern fillCard (Evidence card){
+        ImagePattern cardFill = new ImagePattern(new Image("file:src/sample/assets/"+card.getPicture()+".png"));
+        return cardFill;
     }
 
     public int askForEvidenceComparison(Evidence chosenCard, Evidence opponentMurderCase) {
