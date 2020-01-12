@@ -186,21 +186,21 @@ public class Main extends Application {
             hand.pickTheCardDuringGame();
             chosenCard = hand.displayHand();
 
-            if (chosenCard.getPlace() == "GARDEN" ){
+            if (chosenCard.getPlace().equals("GARDEN")){
                 createdCircles.get(0).setFill(new ImagePattern(garden));}
-            if (chosenCard.getPlace() == "HOUSE" ){
+            if (chosenCard.getPlace().equals("HOUSE")){
                 createdCircles.get(0).setFill(new ImagePattern(house));}
-            if (chosenCard.getTool() == "GUN" ){
+            if (chosenCard.getTool().equals("GUN")){
                 createdCircles.get(1).setFill(new ImagePattern(gun));}
-            if (chosenCard.getTool() == "KNIFE" ){
+            if (chosenCard.getTool().equals("KNIFE")){
                 createdCircles.get(1).setFill(new ImagePattern(knife));}
-            if (chosenCard.getGender() == "WOMAN" ){
+            if (chosenCard.getGender().equals("WOMAN")){
                 createdCircles.get(2).setFill(new ImagePattern(woman));}
-            if (chosenCard.getGender() == "MAN" ){
+            if (chosenCard.getGender().equals("MAN")){
                 createdCircles.get(2).setFill(new ImagePattern(man));}
-            if (chosenCard.getTime() == "DAY" ){
+            if (chosenCard.getTime().equals("DAY")){
                 createdCircles.get(3).setFill(new ImagePattern(day));}
-            if (chosenCard.getTime() == "NIGHT" ){
+            if (chosenCard.getTime().equals("NIGHT")){
                 createdCircles.get(3).setFill(new ImagePattern(night));}
         });
 
